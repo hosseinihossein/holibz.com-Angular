@@ -16,7 +16,7 @@ jobs:
 
       # 2. Setup the SSH key securely using the SSH agent
       - name: Configure SSH
-        uses: webfactory/ssh-agent-action@v0.10.0
+        uses: webfactory/ssh-agent@v0.10.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
