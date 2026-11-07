@@ -1,0 +1,7 @@
+{
+  "routes": {
+    "/identity/login": {},
+    "/identity/resetpassword": {},
+    "/identity/signup": {}
+  }
+}
