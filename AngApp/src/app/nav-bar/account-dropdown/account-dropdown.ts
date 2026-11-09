@@ -16,9 +16,9 @@ import { ProfileService } from '../../user-account/profile/profile-service';
 export class AccountDropdown {
   menu = input.required<MatMenu>();
   identityService = inject(IdentityService);
-  userAccService = inject(ProfileService);
+  profileService = inject(ProfileService);
 
   //imgSrc = computed(() => this.identityService.getUserImageAddress(this.identityService.userModel()));
-    
+
   readonly imgBtnStyle = "padding: 0px; width: 40px; height: 40px; transform: translateY(3px);"
 }
