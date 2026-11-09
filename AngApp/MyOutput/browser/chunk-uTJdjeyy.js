@@ -1,0 +1,1 @@
+import{bt as UC,lr as tw,r as Al,vr as xl}from"./chunk-BPeXiJGn.js";var r=class s{static ɵfac=function(e){return new(e||s)};static ɵcmp=tw({type:s,selectors:[[`app-reset-password`]],decls:2,vars:0,template:function(e,p){e&1&&(xl(0,`p`),UC(1,`reset-password works!`),Al())},encapsulation:2})};export{r as ResetPassword};

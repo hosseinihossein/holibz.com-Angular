@@ -60,7 +60,8 @@
         }
     </mat-form-field>
 
-    <div id="widget-container"></div>
+    <!--div id="widget-container"></div-->
+    <app-turnstile [cfTurnstileFieldTree]="signupForm.CfTurnstileResponse"></app-turnstile>
 
     <div>
         @if(generalError()){
