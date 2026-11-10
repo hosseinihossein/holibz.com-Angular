@@ -61,7 +61,8 @@ export class Login implements AfterViewInit, OnDestroy {
             console.log("before login");
             let res = await firstValueFrom(this.identityService.submitLogin(this.loginModel()));
             console.log("after login");
-            console.log("res: " + res);
+            console.log("res.type: " + res.type);
+            console.log("res.type is json: " + JSON.stringify(res.type));
             if (res.type === HttpEventType.Response && res.redirected && res.url) {
               console.log("res.redirected: " + res.redirected);
               console.log("res.url: " + res.url);
