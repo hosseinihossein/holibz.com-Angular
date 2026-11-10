@@ -96,6 +96,13 @@ export class Login implements AfterViewInit {
                 fieldTree: field
               });
             }
+            else if (err instanceof HttpErrorResponse && err.status == HttpStatusCode.NotFound) {
+              result.push({
+                kind: "LoginError",
+                message: err.error.message || err.message,
+                fieldTree: field
+              });
+            }
             else {
               result.push({
                 kind: "LoginError",
