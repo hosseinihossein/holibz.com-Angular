@@ -1,5 +1,5 @@
 import { NgOptimizedImage } from '@angular/common';
-import { afterNextRender, AfterViewInit, Component, computed, inject, injectAsync, OnDestroy, onIdle, signal, viewChild } from '@angular/core';
+import { afterNextRender, AfterViewInit, Component, computed, DOCUMENT, inject, injectAsync, OnDestroy, onIdle, signal, viewChild } from '@angular/core';
 import { FormRoot, FormField, form, maxLength, minLength, required, email, validate, FieldTree } from '@angular/forms/signals';
 import { MatFabButton, MatButton } from '@angular/material/button';
 import { MatFormField, MatLabel, MatError, MatSuffix } from '@angular/material/form-field';
@@ -27,6 +27,7 @@ export class Signup implements AfterViewInit, OnDestroy {
   identityService = inject(IdentityService);
   router = inject(Router);
   activatedRoute = inject(ActivatedRoute);
+  w = inject(DOCUMENT).defaultView!;
 
   turnstileComponent = viewChild(Turnstile);
 
@@ -80,7 +81,7 @@ export class Signup implements AfterViewInit, OnDestroy {
             let res = await firstValueFrom(this.identityService.submitSignup(this.signupModel()));
             if (res.success) {
               let returnUrl = this.activatedRoute.snapshot.queryParamMap.get("ReturnUrl") || "/";
-              const destinationPath = new URL(returnUrl).pathname;
+              const destinationPath = new URL(returnUrl, this.w.location.origin).pathname;
               this.router.navigateByUrl(destinationPath, { replaceUrl: true });
             }
           }
