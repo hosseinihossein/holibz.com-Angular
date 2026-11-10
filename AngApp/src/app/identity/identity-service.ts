@@ -38,7 +38,6 @@ export class IdentityService {
     return this.httpClient.post("/api/identity/Login", httpParams, { observe: 'response', responseType: "text" }).pipe(
       tap({
         next: res => {
-          console.log("res text: " + res.body);
           if (res.ok) {
             this.myIdentityInfo.reload();
           }
