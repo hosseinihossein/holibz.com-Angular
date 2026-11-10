@@ -58,8 +58,13 @@ export class Login implements AfterViewInit, OnDestroy {
 
           let result: { kind: string, message: string, fieldTree: FieldTree<LoginFormModel | string, string | number, "writable"> }[] | null = null;
           try {
+            console.log("before login");
             let res = await firstValueFrom(this.identityService.submitLogin(this.loginModel()));
+            console.log("after login");
+            console.log("res: " + res);
             if (res.redirected && res.url) {
+              console.log("res.redirected: " + res.redirected);
+              console.log("res.url: " + res.url);
               const destinationPath = new URL(res.url).pathname;
               this.router.navigateByUrl(destinationPath, { replaceUrl: true });
             }
