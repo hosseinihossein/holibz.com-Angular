@@ -58,11 +58,11 @@ export class Login implements AfterViewInit, OnDestroy {
 
           let result: { kind: string, message: string, fieldTree: FieldTree<LoginFormModel | string, string | number, "writable"> }[] | null = null;
           try {
-            //console.log("before login");
+            console.log("before login");
             let res = await firstValueFrom(this.identityService.submitLogin(this.loginModel()));
-            //console.log("after login");
-            //console.log("res: " + res);
-            //console.log("res in json: " + JSON.stringify(res));
+            console.log("after login");
+            console.log("res: " + res);
+            console.log("res in json: " + JSON.stringify(res));
             if (res.redirected && res.url) {
               console.log("res.redirected: " + res.redirected);
               console.log("res.url: " + res.url);
@@ -72,51 +72,60 @@ export class Login implements AfterViewInit, OnDestroy {
           }
           catch (err) {
             result ??= [];
-            if (err instanceof HttpErrorResponse && err.status == HttpStatusCode.BadRequest) {
-              //console.error("BadRequest err: "+err.error);
-              if (err.error.UsernameOrEmail || err.error.errors?.UsernameOrEmail) {
-                result.push({
-                  kind: "UsernameOrEmail",
-                  message: err.error.UsernameOrEmail || err.error.errors?.UsernameOrEmail,
-                  fieldTree: field.UsernameOrEmail
-                });
-              }
-              if (err.error.Password || err.error.errors?.Password) {
-                result.push({
-                  kind: "Password",
-                  message: err.error.Password || err.error.errors?.Password,
-                  fieldTree: field.Password
-                });
-              }
-              if (err.error.CfTurnstileResponse || err.error.errors?.CfTurnstileResponse) {
-                result.push({
-                  kind: "CfTurnstileResponse",
-                  message: err.error.CfTurnstileResponse || err.error.errors?.CfTurnstileResponse,
-                  fieldTree: field.CfTurnstileResponse
-                });
-              }
+            if (err instanceof HttpErrorResponse) {
+              if (err.status == HttpStatusCode.BadRequest) {
+                if (err.error.UsernameOrEmail || err.error.errors?.UsernameOrEmail) {
+                  result.push({
+                    kind: "UsernameOrEmail",
+                    message: err.error.UsernameOrEmail || err.error.errors?.UsernameOrEmail,
+                    fieldTree: field.UsernameOrEmail
+                  });
+                }
+                if (err.error.Password || err.error.errors?.Password) {
+                  result.push({
+                    kind: "Password",
+                    message: err.error.Password || err.error.errors?.Password,
+                    fieldTree: field.Password
+                  });
+                }
+                if (err.error.CfTurnstileResponse || err.error.errors?.CfTurnstileResponse) {
+                  result.push({
+                    kind: "CfTurnstileResponse",
+                    message: err.error.CfTurnstileResponse || err.error.errors?.CfTurnstileResponse,
+                    fieldTree: field.CfTurnstileResponse
+                  });
+                }
 
-              result.push({
-                kind: "LoginError",
-                message: "An error occured during login: " /*+ err.error*/,
-                fieldTree: field
-              });
-            }
-            else if (err instanceof HttpErrorResponse && err.status == HttpStatusCode.NotFound) {
-              result.push({
-                kind: "LoginError",
-                message: err.error.message,
-                fieldTree: field
-              });
+                result.push({
+                  kind: "LoginError",
+                  message: "An error occured during login! BadRequest",
+                  fieldTree: field
+                });
+              }
+              else if (err.status == HttpStatusCode.NotFound) {
+                result.push({
+                  kind: "LoginError",
+                  message: err.error.message,
+                  fieldTree: field
+                });
+              }
+              else {
+                result.push({
+                  kind: "LoginError",
+                  message: "An error occured during login! HttpResponse",
+                  fieldTree: field
+                });
+              }
+              console.error(err.error.message);
             }
             else {
               result.push({
                 kind: "LoginError",
-                message: "An error occured during login!",
+                message: "An error occured during login! Unknown",
                 fieldTree: field
               });
+              console.error(err);
             }
-            console.error(err);
           }
 
           this.displayWait.set(false);

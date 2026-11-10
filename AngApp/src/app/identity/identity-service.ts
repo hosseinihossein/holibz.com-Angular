@@ -35,10 +35,10 @@ export class IdentityService {
       .set("UsernameOrEmail", formModel.UsernameOrEmail)
       .set("ReturnUrl", formModel.ReturnUrl);
 
-    return this.httpClient.post("/api/identity/Login", httpParams, { observe: 'response' }).pipe(
+    return this.httpClient.post("/api/identity/Login", httpParams, { observe: 'response', responseType: "text" }).pipe(
       tap({
         next: res => {
-          console.log("res in json: " + JSON.stringify(res));
+          console.log("res text: " + res.body);
           if (res.ok) {
             this.myIdentityInfo.reload();
           }
