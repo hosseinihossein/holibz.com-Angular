@@ -1,6 +1,6 @@
 import { afterNextRender, computed, inject, PLATFORM_ID, Service, signal } from '@angular/core';
 import { LoginFormModel } from './login/login';
-import { HttpClient, HttpParams, httpResource } from '@angular/common/http';
+import { HttpClient, HttpEventType, HttpParams, httpResource } from '@angular/common/http';
 import { SignupFormModel } from './signup/signup';
 import { tap } from 'rxjs/operators';
 import { isPlatformBrowser } from '@angular/common';
@@ -35,10 +35,10 @@ export class IdentityService {
       .set("UsernameOrEmail", formModel.UsernameOrEmail)
       .set("ReturnUrl", formModel.ReturnUrl);
 
-    return this.httpClient.post("/api/identity/Login", httpParams, { observe: 'response' }).pipe(
+    return this.httpClient.post("/api/identity/Login", httpParams, { observe: 'events' }).pipe(
       tap({
         next: res => {
-          if (res.ok) {
+          if (res.type === HttpEventType.Response && res.ok) {
             this.myIdentityInfo.reload();
           }
         }

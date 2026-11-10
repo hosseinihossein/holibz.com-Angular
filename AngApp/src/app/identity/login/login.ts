@@ -9,7 +9,7 @@ import { NgOptimizedImage } from '@angular/common';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatButton, MatFabButton } from '@angular/material/button';
 import { firstValueFrom } from 'rxjs';
-import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
+import { HttpErrorResponse, HttpEventType, HttpStatusCode } from '@angular/common/http';
 import { IdentityService } from '../identity-service';
 import { Turnstile } from '../../shared/turnstile/turnstile';
 
@@ -62,7 +62,7 @@ export class Login implements AfterViewInit, OnDestroy {
             let res = await firstValueFrom(this.identityService.submitLogin(this.loginModel()));
             console.log("after login");
             console.log("res: " + res);
-            if (res.redirected && res.url) {
+            if (res.type === HttpEventType.Response && res.redirected && res.url) {
               console.log("res.redirected: " + res.redirected);
               console.log("res.url: " + res.url);
               const destinationPath = new URL(res.url).pathname;
