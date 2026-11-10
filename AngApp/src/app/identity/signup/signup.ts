@@ -1,5 +1,5 @@
 import { NgOptimizedImage } from '@angular/common';
-import { afterNextRender, AfterViewInit, Component, computed, inject, injectAsync, onIdle, signal, viewChild } from '@angular/core';
+import { afterNextRender, AfterViewInit, Component, computed, inject, injectAsync, OnDestroy, onIdle, signal, viewChild } from '@angular/core';
 import { FormRoot, FormField, form, maxLength, minLength, required, email, validate, FieldTree } from '@angular/forms/signals';
 import { MatFabButton, MatButton } from '@angular/material/button';
 import { MatFormField, MatLabel, MatError, MatSuffix } from '@angular/material/form-field';
@@ -21,7 +21,7 @@ import { Turnstile } from '../../shared/turnstile/turnstile';
   styleUrl: './signup.css',
   templateUrl: './signup.html',
 })
-export class Signup implements AfterViewInit {
+export class Signup implements AfterViewInit, OnDestroy {
   //_turnstileService = injectAsync(()=>import('../../shared/services/turnstile-service').then(m=>m.TurnstileService),{prefetch: onIdle});
   //_identityService = injectAsync(()=>import('../identity-service').then(m=>m.IdentityService), {prefetch: onIdle});
   identityService = inject(IdentityService);
@@ -156,6 +156,9 @@ export class Signup implements AfterViewInit {
   }
   ngAfterViewInit(): void {
     this.signupForm.Email().focusBoundControl();
+  }
+  ngOnDestroy(): void {
+    this.turnstileComponent()?.removeTurnstile();
   }
 
 }

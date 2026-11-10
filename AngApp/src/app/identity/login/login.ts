@@ -1,4 +1,4 @@
-import { afterNextRender, AfterViewInit, Component, inject, injectAsync, onIdle, OnInit, signal, viewChild } from '@angular/core';
+import { afterNextRender, AfterViewInit, Component, inject, injectAsync, OnDestroy, onIdle, OnInit, signal, viewChild } from '@angular/core';
 import { form, FormRoot, FormField, required, minLength, FieldTree, maxLength } from '@angular/forms/signals';
 import { MatError, MatFormField, MatLabel, MatSuffix } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
@@ -21,7 +21,7 @@ import { Turnstile } from '../../shared/turnstile/turnstile';
   styleUrl: './login.css',
   templateUrl: './login.html',
 })
-export class Login implements AfterViewInit {
+export class Login implements AfterViewInit, OnDestroy {
   //_turnstileService = injectAsync(() => import('../../shared/services/turnstile-service').then(m => m.TurnstileService), { prefetch: onIdle });
   //_identityService = injectAsync(()=>import('../identity-service').then(m=>m.IdentityService), {prefetch: onIdle});
   identityService = inject(IdentityService);
@@ -129,6 +129,9 @@ export class Login implements AfterViewInit {
   }
   ngAfterViewInit(): void {
     this.loginForm.UsernameOrEmail().focusBoundControl();
+  }
+  ngOnDestroy(): void {
+    this.turnstileComponent()?.removeTurnstile();
   }
 
 }

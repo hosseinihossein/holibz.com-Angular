@@ -109,4 +109,8 @@ export class Turnstile {
   resetWidget() {
     turnstile.reset(this.widgetId());
   }
+
+  removeTurnstile() {
+    turnstile.remove();
+  }
 }

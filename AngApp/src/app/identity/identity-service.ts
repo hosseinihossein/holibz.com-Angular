@@ -65,13 +65,11 @@ export class IdentityService {
   }
 
   logout() {
-    this.httpClient.post("/api/identity/Logout", null).pipe(
-      tap({
-        next: () => {
-          this.myIdentityInfo.reload();
-        }
-      }),
-    );
+    this.httpClient.post("/api/identity/Logout", null).subscribe({
+      next: () => {
+        this.myIdentityInfo.reload();
+      },
+    });
   }
 
   getUsername(userId: string) {
