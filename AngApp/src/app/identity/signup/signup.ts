@@ -119,14 +119,14 @@ export class Signup implements AfterViewInit {
 
               result.push({
                 kind: "SignupError",
-                message: "An error occured during signup: " + err.message,
+                message: "An error occured during signup: " /*+ err.error || err.message*/,
                 fieldTree: field
               });
             }
             else if (err instanceof HttpErrorResponse && err.status == HttpStatusCode.NotFound) {
               result.push({
                 kind: "LoginError",
-                message: err.error.message || err.message,
+                message: err.error.message,
                 fieldTree: field
               });
             }
@@ -137,6 +137,7 @@ export class Signup implements AfterViewInit {
                 fieldTree: field
               });
             }
+            console.error(err);
           }
 
           this.displayWait.set(false);
