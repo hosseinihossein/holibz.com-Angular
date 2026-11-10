@@ -35,7 +35,7 @@ export class IdentityService {
       .set("UsernameOrEmail", formModel.UsernameOrEmail)
       .set("ReturnUrl", formModel.ReturnUrl);
 
-    return this.httpClient.post("/api/identity/Login", httpParams, { observe: 'events' }).pipe(
+    return this.httpClient.post("/api/identity/Login", httpParams, { observe: 'response', redirect: 'manual' }).pipe(
       tap({
         next: res => {
           if (res.type === HttpEventType.Response && res.ok) {
