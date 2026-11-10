@@ -24,6 +24,8 @@ export class IdentityService {
 
   readonly GetUsernameUrl = "/api/identity/GetUsername?userId=";
 
+  readonly getAntiForgeryToken = httpResource(() => this.isBrowser ? "/api/identity/GetAntiForgeryToken" : undefined);
+
   constructor() { }
 
   submitLogin(formModel: LoginFormModel) {

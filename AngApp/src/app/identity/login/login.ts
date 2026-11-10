@@ -65,9 +65,9 @@ export class Login implements AfterViewInit {
             }
           }
           catch (err) {
+            result ??= [];
             if (err instanceof HttpErrorResponse && err.status == HttpStatusCode.BadRequest) {
               //console.error("BadRequest err: "+err.error);
-              result ??= [];
               if (err.error.UsernameOrEmail || err.error.errors?.UsernameOrEmail) {
                 result.push({
                   kind: "UsernameOrEmail",
@@ -96,6 +96,13 @@ export class Login implements AfterViewInit {
                 fieldTree: field
               });
             }
+            else {
+              result.push({
+                kind: "LoginError",
+                message: "An error occured during login!",
+                fieldTree: field
+              });
+            }
           }
 
           this.displayWait.set(false);
@@ -109,13 +116,12 @@ export class Login implements AfterViewInit {
     }
   );
 
-  constructor() { }
+  constructor() {
+    this.identityService.getAntiForgeryToken.reload();
+  }
   ngAfterViewInit(): void {
     this.loginForm.UsernameOrEmail().focusBoundControl();
   }
-
-
-
 
 }
 

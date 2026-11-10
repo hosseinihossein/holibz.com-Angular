@@ -85,9 +85,9 @@ export class Signup implements AfterViewInit {
             }
           }
           catch (err) {
+            result ??= [];
             if (err instanceof HttpErrorResponse && err.status == HttpStatusCode.BadRequest) {
               //console.error("BadRequest err: "+err.error);
-              result ??= [];
               if (err.error.Email || err.error.errors?.Email) {
                 result.push({
                   kind: "Email",
@@ -118,8 +118,15 @@ export class Signup implements AfterViewInit {
               }
 
               result.push({
-                kind: "LoginError",
-                message: "An error occured during login: " + err.message,
+                kind: "SignupError",
+                message: "An error occured during signup: " + err.message,
+                fieldTree: field
+              });
+            }
+            else {
+              result.push({
+                kind: "SignupError",
+                message: "An error occured during signup!",
                 fieldTree: field
               });
             }
@@ -136,7 +143,9 @@ export class Signup implements AfterViewInit {
     }
   );
 
-  constructor() { }
+  constructor() {
+    this.identityService.getAntiForgeryToken.reload();
+  }
   ngAfterViewInit(): void {
     this.signupForm.Email().focusBoundControl();
   }
