@@ -1,11 +1,12 @@
 <mat-card appearance="outlined">
     <mat-card-header>
         <div style="float: inline-start;position: relative;">
-            <button matIconButton class="edit-btn" style="position: absolute;bottom: 0;left: -8px;"
+            <button matIconButton class="edit-btn" style="position: absolute;bottom: 0;right: -8px;"
                 matTooltip="Set a new image" (click)="setImage()">
                 <mat-icon>edit</mat-icon>
             </button>
-            <button matIconButton class="edit-btn" style="position: absolute;bottom: 0;right: -8px;"
+            <button matIconButton class="edit-btn"
+                style="position: absolute;bottom: 0;left: -8px; color: var(--mat-sys-error);"
                 matTooltip="Delete the image" (click)="deleteProfileAvatar()">
                 <mat-icon>delete</mat-icon>
             </button>
@@ -49,12 +50,11 @@
         </button>
     </mat-card-content>
 
-    <!--mat-card-actions align="start">
-        <button matFab extended (click)="openChangePasswordDialog()">
-            <mat-icon>key</mat-icon>
-            Change Password
-        </button>
-    </mat-card-actions-->
+    <mat-card-actions align="end">
+        <a matButton="" [routerLink]="['/UserAccount/Profile']">
+            Ok
+        </a>
+    </mat-card-actions>
 
     @if(displayWaitSpinner()){
     <app-wait-spinner></app-wait-spinner>

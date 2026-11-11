@@ -1,1 +1,0 @@
-import{bt as UC,lr as tw,r as Al,vr as xl}from"./chunk-BPeXiJGn.js";var o=class e{static ɵfac=function(t){return new(t||e)};static ɵcmp=tw({type:e,selectors:[[`app-setting`]],decls:2,vars:0,template:function(t,p){t&1&&(xl(0,`p`),UC(1,`setting works!`),Al())},encapsulation:2})};export{o as Setting};

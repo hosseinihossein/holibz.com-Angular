@@ -3,17 +3,18 @@ import { Component, computed, effect, inject, signal } from '@angular/core';
 import { MatButton, MatAnchor } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { WaitSpinner } from '../../shared/wait-spinner/wait-spinner';
 import { IdentityService } from '../../identity/identity-service';
 import { ProfileService } from './profile-service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { firstValueFrom } from 'rxjs';
 import { httpResource, HttpResourceRef } from '@angular/common/http';
+import { Mainboard } from '../mainboard/mainboard';
 
 @Component({
   imports: [MatCardModule, MatIcon, MatButton, NgOptimizedImage, WaitSpinner,
-    MatAnchor, RouterLink, ],
+    MatAnchor, RouterLink, Mainboard],
   selector: 'app-profile',
   styleUrl: './profile.css',
   templateUrl: './profile.html',
@@ -22,45 +23,48 @@ export class Profile {
   identityService = inject(IdentityService);
   profileService = inject(ProfileService);
   activatedRoute = inject(ActivatedRoute);
+  router = inject(Router);
 
   private params = toSignal(this.activatedRoute.paramMap)
   userId = computed(() =>
     this.params()?.get("userId") ?? this.identityService.myIdentityInfo.value()?.id
   );
-  isMe = computed(()=>this.userId() && this.userId() === this.identityService.myIdentityInfo.value()?.id);
-  
-  private otherProfileInfo = httpResource<UserProfileInfo>(()=>
+  isMe = computed(() => this.userId() && this.userId() === this.identityService.myIdentityInfo.value()?.id);
+
+  private otherProfileInfo = httpResource<UserProfileInfo>(() =>
     this.isMe() ?
-    undefined :
-    this.profileService.profileInfoUrl+this.userId()
+      undefined :
+      this.profileService.profileInfoUrl + this.userId()
   );
-  profileInfo = computed(()=>
+  profileInfo = computed(() =>
     this.isMe() ?
-    this.profileService.myProfileInfo.value() :
-    this.otherProfileInfo.value()
+      this.profileService.myProfileInfo.value() :
+      this.otherProfileInfo.value()
   );
-  
-  private otherProfileUsername = httpResource<string>(()=>
+
+  private otherProfileUsername = httpResource<string>(() =>
     this.isMe() ?
-    undefined :
-    this.identityService.GetUsernameUrl+this.userId()
+      undefined :
+      this.identityService.GetUsernameUrl + this.userId()
   );
-  profileUsername = computed(()=>
+  profileUsername = computed(() =>
     this.isMe() ?
-    this.identityService.myIdentityInfo.value()?.userName :
-    this.otherProfileUsername.value()
+      this.identityService.myIdentityInfo.value()?.userName :
+      this.otherProfileUsername.value()
   );
 
   displayWaitSpinner = signal(false);
 
-  constructor(){
-    
+  constructor() {
+    if (!this.userId()) {
+      this.router.navigate(['/Identity/Login']);
+    }
   }
 
 }
 
-export interface UserProfileInfo{
-  avatarUrl?: string|null;
-  name?: string|null;
-  description?: string|null;
+export interface UserProfileInfo {
+  avatarUrl?: string | null;
+  name?: string | null;
+  description?: string | null;
 }

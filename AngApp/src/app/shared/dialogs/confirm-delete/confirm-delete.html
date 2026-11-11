@@ -9,6 +9,8 @@
     }
     <mat-dialog-actions>
         <button matButton mat-dialog-close>Cancel</button>
-        <button matButton="filled" class="warning" [mat-dialog-close]="{confirm:true}">Yes</button>
+        <button matButton="outlined"
+            style="background-color: var(--mat-sys-error-container);color: var(--mat-sys-error);"
+            [mat-dialog-close]="{confirm:true}">Yes</button>
     </mat-dialog-actions>
 </mat-dialog-content>

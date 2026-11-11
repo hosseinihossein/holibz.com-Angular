@@ -1,7 +1,7 @@
 <mat-dialog-content>
     <mat-form-field appearance="fill" subscriptSizing="dynamic">
         <mat-label>{{data.label}}</mat-label>
-        <input type="text" matInput [formField]="inputForm.TextValue">
+        <!--input type="text" matInput [formField]="inputForm.TextValue"-->
         <textarea matInput [formField]="inputForm.TextValue" placeholder="Write here.." rows="5"></textarea>
         @if(inputForm.TextValue().touched() && inputForm.TextValue().invalid()){
         <mat-error>
