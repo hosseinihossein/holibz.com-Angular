@@ -1,8 +1,8 @@
 {
   "routes": {
     "/": {},
-    "/identity/login": {},
-    "/identity/resetpassword": {},
-    "/identity/signup": {}
+    "/Identity/Login": {},
+    "/Identity/ResetPassword": {},
+    "/Identity/Signup": {}
   }
 }

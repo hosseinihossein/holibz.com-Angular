@@ -21,7 +21,7 @@
 
     <mat-menu #account class="navbar-matMenu">
         @if(identityService && identityService.isAuthenticated()){
-        <a mat-menu-item [routerLink]="['/profile']">
+        <a mat-menu-item [routerLink]="['/UserAccount/Profile']">
             <mat-icon>account_box</mat-icon>
             Profile
         </a>
@@ -31,11 +31,11 @@
         </a>
         }
         @else{
-        <a mat-menu-item [routerLink]="['/identity/login']">
+        <a mat-menu-item [routerLink]="['/Identity/Login']">
             <mat-icon>login</mat-icon>
             Login
         </a>
-        <a mat-menu-item [routerLink]="['/identity/signup']">
+        <a mat-menu-item [routerLink]="['/Identity/Signup']">
             <mat-icon>person_add</mat-icon>
             Create a new account
         </a>
