@@ -32,7 +32,7 @@ export class Profile {
   isMe = computed(() => this.userId() && this.userId() === this.identityService.myIdentityInfo.value()?.id);
 
   profileInfo = httpResource<UserProfileInfo>(() => this.profileService.getProfileInfo_Url + this.userId());
-  profileUsername = httpResource<string>(() => this.identityService.getUsername_Url + this.userId());
+  profileUsername = httpResource<{ username: string }>(() => this.identityService.getUsername_Url + this.userId());
 
   displayWaitSpinner = signal(false);
 

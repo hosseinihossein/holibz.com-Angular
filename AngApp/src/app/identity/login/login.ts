@@ -139,10 +139,10 @@ export class Login implements AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     this.loginForm.UsernameOrEmail().focusBoundControl();
   }
+
   ngOnDestroy(): void {
     this.turnstileComponent()?.removeTurnstile();
   }
-
 }
 
 export interface LoginFormModel {

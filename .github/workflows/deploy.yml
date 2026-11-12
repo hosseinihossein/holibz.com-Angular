@@ -32,3 +32,14 @@ jobs:
           rsync -avz --delete \
             ./AngApp/MyOutput/browser/ \
             ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/opt/myApps/nginx/html/
+
+      # 5. Create Storage Directories for named volumes
+      - name: Create Storage Directories
+        run: |
+          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << 'EOF'
+            set -e # Stop execution if any command fails
+
+            # Create storage directories for named volumes 
+            mkdir -p /opt/myApps/nginx/html/Storage/UserAvatar
+            mkdir -p /opt/myApps/nginx/html/Storage/LibraryImage
+          EOF
