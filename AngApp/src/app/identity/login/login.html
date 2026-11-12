@@ -78,10 +78,12 @@
 <form id="login-with-google" hidden action="/api/identity/LoginWithGoogle" method="post"
     enctype="application/x-www-form-urlencoded" (submit)="displayWait.set(true)">
     <input type="hidden" name="ReturnUrl" [value]="loginForm.ReturnUrl().value()">
+    <input type="hidden" name="CfTurnstileResponse" [value]="loginForm.CfTurnstileResponse().value()">
     <!--button type="submit">Login with Google</button-->
 </form>
 <form id="login-with-github" hidden action="/api/identity/LoginWithGitHub" method="post"
     enctype="application/x-www-form-urlencoded" (submit)="displayWait.set(true)">
     <input type="hidden" name="ReturnUrl" [value]="loginForm.ReturnUrl().value()">
+    <input type="hidden" name="CfTurnstileResponse" [value]="loginForm.CfTurnstileResponse().value()">
     <!--button type="submit">Login with GitHub</button-->
 </form>

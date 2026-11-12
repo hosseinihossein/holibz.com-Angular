@@ -98,7 +98,7 @@ export class Login implements AfterViewInit, OnDestroy {
               else if (err.status == HttpStatusCode.NotFound) {
                 result.push({
                   kind: "LoginError",
-                  message: err.error.message,
+                  message: err.error.message || err.message,
                   fieldTree: field
                 });
               }
