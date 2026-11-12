@@ -6,7 +6,7 @@
         @if(loginForm.UsernameOrEmail().touched() && loginForm.UsernameOrEmail().invalid()){
         <mat-error>
             @for(error of loginForm.UsernameOrEmail().errors(); track error){
-            {{error.message}}
+            <span style="display: inline-block;">{{error.message}}</span>
             }
         </mat-error>
         }
@@ -24,7 +24,7 @@
         @if(loginForm.Password().touched() && loginForm.Password().invalid()){
         <mat-error>
             @for(error of loginForm.Password().errors(); track error){
-            {{error.message}}
+            <span style="display: inline-block;">{{error.message}}</span>
             }
         </mat-error>
         }
@@ -32,6 +32,13 @@
 
     <!--div id="widget-container"></div-->
     <app-turnstile [cfTurnstileFieldTree]="loginForm.CfTurnstileResponse"></app-turnstile>
+    @if(loginForm.Password().touched() && loginForm.Password().invalid()){
+    <p style="font-size: 14px;color: var(--mat-sys-error);">
+        @for(error of loginForm.Password().errors(); track error){
+        <span style="display: inline-block;">{{error.message}}</span>
+        }
+    </p>
+    }
 
     <div>
         @if(generalError()){
@@ -40,7 +47,7 @@
         @if(loginForm().errors().length > 0 ){
         <p style="font-size: 14px;color: var(--mat-sys-error);">
             @for(error of loginForm().errors(); track error){
-            {{error.message}}
+            <span style="display: inline-block;">{{error.message}}</span>
             }
         </p>
         }
@@ -59,11 +66,13 @@
     <div style="text-align: center;font-size: 12px;margin: 16px 0;">or</div>
 
     <div style="margin: auto;display: flex; justify-content: space-evenly;">
-        <button type="submit" form="login-with-github" matFab matTooltip="Login with GitHub">
+        <button type="submit" form="login-with-github" matFab matTooltip="Login with GitHub"
+            [disabled]="loginForm.CfTurnstileResponse().invalid">
             <img priority width="64" height="64" ngSrc="https://img.icons8.com/sf-black-filled/64/github.png"
                 alt="github-logo" />
         </button>
-        <button type="submit" form="login-with-google" matFab matTooltip="Login with Google">
+        <button type="submit" form="login-with-google" matFab matTooltip="Login with Google"
+            [disabled]="loginForm.CfTurnstileResponse().invalid">
             <img priority width="48" height="48" ngSrc="https://img.icons8.com/color/48/google-logo.png"
                 alt="google-logo" />
         </button>

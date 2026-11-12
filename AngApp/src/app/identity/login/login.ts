@@ -32,7 +32,6 @@ export class Login implements AfterViewInit, OnDestroy {
 
   generalError = signal('');
   displayWait = signal(false);
-  turnstileEnabled = signal(false);
 
   loginModel = signal<LoginFormModel>({
     CfTurnstileResponse: '',
@@ -49,6 +48,8 @@ export class Login implements AfterViewInit, OnDestroy {
       required(schemaPath.Password, { message: "Enter your Password!" });
       minLength(schemaPath.Password, 8, { message: "Password must be at least 8 characters!" });
       maxLength(schemaPath.Password, 60, { message: "Password cannot be more than 60 characters!" });
+
+      required(schemaPath.CfTurnstileResponse, { when: () => this.turnstileComponent()?.isEnabled() ?? false });
     },
     {
       submission: {

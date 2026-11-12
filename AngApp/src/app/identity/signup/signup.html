@@ -18,7 +18,7 @@
         @if(signupForm.Username().touched() && signupForm.Username().invalid()){
         <mat-error>
             @for(error of signupForm.Username().errors(); track error){
-            {{error.message}}
+            <span style="display: inline-block;">{{error.message}}</span>
             }
         </mat-error>
         }
@@ -36,7 +36,7 @@
         @if(signupForm.Password().touched() && signupForm.Password().invalid()){
         <mat-error>
             @for(error of signupForm.Password().errors(); track error){
-            {{error.message}}
+            <span style="display: inline-block;">{{error.message}}</span>
             }
         </mat-error>
         }
@@ -54,7 +54,7 @@
         @if(signupForm.ConfirmPassword().touched() && signupForm.ConfirmPassword().invalid()){
         <mat-error>
             @for(error of signupForm.ConfirmPassword().errors(); track error){
-            {{error.message}}
+            <span style="display: inline-block;">{{error.message}}</span>
             }
         </mat-error>
         }
@@ -62,6 +62,13 @@
 
     <!--div id="widget-container"></div-->
     <app-turnstile [cfTurnstileFieldTree]="signupForm.CfTurnstileResponse"></app-turnstile>
+    @if(signupForm.Password().touched() && signupForm.Password().invalid()){
+    <p style="font-size: 14px;color: var(--mat-sys-error);">
+        @for(error of signupForm.Password().errors(); track error){
+        <span style="display: inline-block;">{{error.message}}</span>
+        }
+    </p>
+    }
 
     <div>
         @if(generalError()){
@@ -70,7 +77,7 @@
         @if(signupForm().errors().length > 0 ){
         <p style="font-size: 14px;color: var(--mat-sys-error);">
             @for(error of signupForm().errors(); track error){
-            {{error.message}}
+            <span style="display: inline-block;">{{error.message}}</span>
             }
         </p>
         }
@@ -88,11 +95,13 @@
     <div style="text-align: center;font-size: 12px;margin: 16px 0;">or</div>
 
     <div style="margin: auto;display: flex; justify-content: space-evenly;">
-        <button type="submit" form="login-with-github" matFab matTooltip="Login with GitHub">
+        <button type="submit" form="login-with-github" matFab matTooltip="Login with GitHub"
+            [disabled]="signupForm.CfTurnstileResponse().invalid">
             <img priority width="64" height="64" ngSrc="https://img.icons8.com/sf-black-filled/64/github.png"
                 alt="github-logo" />
         </button>
-        <button type="submit" form="login-with-google" matFab matTooltip="Login with Google">
+        <button type="submit" form="login-with-google" matFab matTooltip="Login with Google"
+            [disabled]="signupForm.CfTurnstileResponse().invalid">
             <img priority width="48" height="48" ngSrc="https://img.icons8.com/color/48/google-logo.png"
                 alt="google-logo" />
         </button>
@@ -102,4 +111,17 @@
     <app-wait-spinner></app-wait-spinner>
     }
 
+</form>
+
+<form id="login-with-google" hidden action="/api/identity/LoginWithGoogle" method="post"
+    enctype="application/x-www-form-urlencoded" (submit)="displayWait.set(true)">
+    <input type="hidden" name="ReturnUrl" value="/">
+    <input type="hidden" name="CfTurnstileResponse" [value]="signupForm.CfTurnstileResponse().value()">
+    <!--button type="submit">Login with Google</button-->
+</form>
+<form id="login-with-github" hidden action="/api/identity/LoginWithGitHub" method="post"
+    enctype="application/x-www-form-urlencoded" (submit)="displayWait.set(true)">
+    <input type="hidden" name="ReturnUrl" value="/">
+    <input type="hidden" name="CfTurnstileResponse" [value]="signupForm.CfTurnstileResponse().value()">
+    <!--button type="submit">Login with GitHub</button-->
 </form>

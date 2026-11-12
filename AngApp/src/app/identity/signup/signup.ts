@@ -33,7 +33,6 @@ export class Signup implements AfterViewInit, OnDestroy {
 
   generalError = signal('');
   displayWait = signal(false);
-  turnstileEnabled = signal(false);
 
   signupModel = signal<SignupFormModel>({
     CfTurnstileResponse: '',
@@ -69,6 +68,8 @@ export class Signup implements AfterViewInit, OnDestroy {
         }
         return null;
       });
+
+      required(schemaPath.CfTurnstileResponse, { when: () => this.turnstileComponent()?.isEnabled() ?? false });
     },
     {
       submission: {
