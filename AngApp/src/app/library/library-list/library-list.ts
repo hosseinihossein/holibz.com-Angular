@@ -59,7 +59,8 @@ export class LibraryList {
                   title: 'Submit Error',
                   status: 'warning'
                 }
-              })
+              });
+              throw (err);
             }
           });
         }
