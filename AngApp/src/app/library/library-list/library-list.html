@@ -1,1 +1,24 @@
-<p>library-list works!</p>
+<mat-sidenav-container>
+    <mat-sidenav id="" [opened]="sidenavOpen()" mode="side" position="start" fixedInViewport fixedTopGap="56"
+        fixedBottomGap="16">
+        @if(isMe()){
+        <button matButton="" (click)="openNewLibraryForm()">
+            <mat-icon>add_box</mat-icon>
+            Create New Library
+        </button>
+        }
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <button matMiniFab (click)="toggleSidenavOpen()">
+            <mat-icon>{{sidenavOpen() ? 'left_panel_close' : 'left_panel_open'}}</mat-icon>
+        </button>
+        <div class="list">
+            @for(libId of libIds(); track libId){
+            <app-library-card [libraryId]="libId"></app-library-card>
+            }
+        </div>
+
+    </mat-sidenav-content>
+
+</mat-sidenav-container>

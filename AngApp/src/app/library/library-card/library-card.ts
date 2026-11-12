@@ -21,33 +21,29 @@ export class LibraryCard {
   libraryId = input.required<string>();
 
   router = inject(Router);
-  libraryService = inject(LibraryService);
-  isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+  libService = inject(LibraryService);
   identityService = inject(IdentityService);
 
-  libraryCardInfo = httpResource<LibraryCardModel>(()=>
-    this.isBrowser ? 
-    this.libraryService.libraryCardInfoUrl + this.libraryId() :
-    undefined
+  libCardInfo = httpResource<LibraryCardModel>(() =>
+    this.libService.libraryCardInfo_Url + this.libraryId()
   );
-  ownerUsername = httpResource<string|null>(()=>
-    this.libraryCardInfo.hasValue() ?
-    this.identityService.GetUsernameUrl + this.libraryCardInfo.value()?.id :
-    undefined
+  ownerUsername = httpResource<string>(() =>
+    this.libCardInfo.hasValue() ?
+      this.identityService.getUsername_Url + this.libCardInfo.value()?.ownerId :
+      undefined
   );
 
-  constructor(){}
+  constructor() { }
 
-  openLibrary(){
+  openLibrary() {
     this.router.navigate(["/Library", this.libraryId()]);
   }
 }
 
-export interface LibraryCardModel{
-  id:string;
-  ownerId:string;
-  title:string;
-  description?:string|null;
-  imageUrl?:string|null;
-  shelves:string[];
+export interface LibraryCardModel {
+  id: string;
+  ownerId: string;
+  title: string;
+  description?: string | null;
+  imageUrl?: string | null;
 }

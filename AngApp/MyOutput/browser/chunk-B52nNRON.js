@@ -1,1 +1,0 @@
-import{Hn as nw,et as Ol,o as Al,t as $C}from"./chunk-DDb8UntD.js";var r=class s{static ɵfac=function(e){return new(e||s)};static ɵcmp=nw({type:s,selectors:[[`app-reset-password`]],decls:2,vars:0,template:function(e,p){e&1&&(Al(0,`p`),$C(1,`reset-password works!`),Ol())},encapsulation:2})};export{r as ResetPassword};

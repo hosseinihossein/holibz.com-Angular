@@ -31,27 +31,8 @@ export class Profile {
   );
   isMe = computed(() => this.userId() && this.userId() === this.identityService.myIdentityInfo.value()?.id);
 
-  private otherProfileInfo = httpResource<UserProfileInfo>(() =>
-    this.isMe() ?
-      undefined :
-      this.profileService.profileInfoUrl + this.userId()
-  );
-  profileInfo = computed(() =>
-    this.isMe() ?
-      this.profileService.myProfileInfo.value() :
-      this.otherProfileInfo.value()
-  );
-
-  private otherProfileUsername = httpResource<string>(() =>
-    this.isMe() ?
-      undefined :
-      this.identityService.GetUsernameUrl + this.userId()
-  );
-  profileUsername = computed(() =>
-    this.isMe() ?
-      this.identityService.myIdentityInfo.value()?.userName :
-      this.otherProfileUsername.value()
-  );
+  profileInfo = httpResource<UserProfileInfo>(() => this.profileService.getProfileInfo_Url + this.userId());
+  profileUsername = httpResource<string>(() => this.identityService.getUsername_Url + this.userId());
 
   displayWaitSpinner = signal(false);
 

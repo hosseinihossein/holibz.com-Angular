@@ -1,0 +1,1 @@
+import{J as Ll,On as kl,Zt as aw,ct as QC}from"./chunk-kniop8OV.js";var o=class e{static ɵfac=function(t){return new(t||e)};static ɵcmp=aw({type:e,selectors:[[`app-setting`]],decls:2,vars:0,template:function(t,p){t&1&&(kl(0,`p`),QC(1,`setting works!`),Ll())},encapsulation:2})};export{o as Setting};

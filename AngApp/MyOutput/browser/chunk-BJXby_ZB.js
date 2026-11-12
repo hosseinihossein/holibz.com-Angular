@@ -1,1 +1,0 @@
-import{Hn as nw,et as Ol,o as Al,t as $C}from"./chunk-DDb8UntD.js";var o=class e{static ɵfac=function(t){return new(t||e)};static ɵcmp=nw({type:e,selectors:[[`app-setting`]],decls:2,vars:0,template:function(t,p){t&1&&(Al(0,`p`),$C(1,`setting works!`),Ol())},encapsulation:2})};export{o as Setting};

@@ -1,0 +1,1 @@
+import{J as Ll,On as kl,Zt as aw,ct as QC}from"./chunk-kniop8OV.js";var r=class s{static ɵfac=function(e){return new(e||s)};static ɵcmp=aw({type:s,selectors:[[`app-reset-password`]],decls:2,vars:0,template:function(e,p){e&1&&(kl(0,`p`),QC(1,`reset-password works!`),Ll())},encapsulation:2})};export{r as ResetPassword};

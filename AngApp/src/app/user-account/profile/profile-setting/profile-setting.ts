@@ -1,6 +1,6 @@
 import { NgOptimizedImage } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
-import { MatFabButton, MatIconButton } from '@angular/material/button';
+import { MatButton, MatFabButton, MatIconButton } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
@@ -9,7 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { httpResource } from '@angular/common/http';
 import { IdentityService } from '../../../identity/identity-service';
 import { ProfileService } from '../profile-service';
-import { GetImage, GetImageDataModel, GetImageResultModel } from '../../../shared/dialogs/get-image/get-image';
+import { GetImage, GetImage_DataModel, GetImage_ResultModel } from '../../../shared/dialogs/get-image/get-image';
 import { Result, ResultDataModel } from '../../../shared/dialogs/result/result';
 import { ConfirmDelete, ConfirmDeleteDataModel, ConfirmDeleteResultModel } from '../../../shared/dialogs/confirm-delete/confirm-delete';
 import { EditInputText, EditInputTextDataModel, EditInputTextResultModel } from '../../../shared/dialogs/edit-input-text/edit-input-text';
@@ -17,7 +17,9 @@ import { EditTextarea, EditTextareaDataModel, EditTextareaResultModel } from '..
 import { RouterLink } from '@angular/router';
 
 @Component({
-  imports: [MatCardModule, MatIcon, MatIconButton, MatTooltip, NgOptimizedImage, WaitSpinner, RouterLink],
+  imports: [MatCardModule, MatIcon, MatIconButton, MatTooltip, NgOptimizedImage, WaitSpinner, RouterLink,
+    MatButton
+  ],
   selector: 'app-profile-setting',
   styleUrl: './profile-setting.css',
   templateUrl: './profile-setting.html',
@@ -29,16 +31,12 @@ export class ProfileSetting {
 
   displayWaitSpinner = signal(false);
 
-  private aft = httpResource(() =>
-    this.identityService.myIdentityInfo.value() ?
-      "/api/identity/GetAntiForgeryToken" :
-      undefined
-  );
-
-  constructor() { }
+  constructor() {
+    this.identityService.getAntiForgeryToken.reload();
+  }
 
   setImage() {
-    this.dialog.open<GetImage, GetImageDataModel, GetImageResultModel>(GetImage, {
+    this.dialog.open<GetImage, GetImage_DataModel, GetImage_ResultModel>(GetImage, {
       data: {
         hasTitle: false,
         imageSize: 128 * 1024,// 128 KB
@@ -48,9 +46,6 @@ export class ProfileSetting {
         this.displayWaitSpinner.set(true);
         this.profileService.saveUserAvatar(result.file).subscribe({
           next: res => {
-            if (res && res.success) {
-              this.profileService.myProfileInfo.reload();
-            }
             this.displayWaitSpinner.set(false);
           },
           error: err => {
@@ -83,9 +78,6 @@ export class ProfileSetting {
         this.displayWaitSpinner.set(true);
         this.profileService.deleteUserAvatar().subscribe({
           next: res => {
-            if (res && res.success) {
-              this.profileService.myProfileInfo.reload();
-            }
             this.displayWaitSpinner.set(false);
           },
           error: err => {
@@ -120,9 +112,6 @@ export class ProfileSetting {
         this.displayWaitSpinner.set(true);
         this.profileService.changeName(result.value).subscribe({
           next: res => {
-            if (res && res.success) {
-              this.profileService.myProfileInfo.reload();
-            }
             this.displayWaitSpinner.set(false);
           },
           error: err => {
@@ -157,9 +146,6 @@ export class ProfileSetting {
         this.displayWaitSpinner.set(true);
         this.profileService.changeDescription(result.value).subscribe({
           next: res => {
-            if (res) {
-              this.profileService.myProfileInfo.reload();
-            }
             this.displayWaitSpinner.set(false);
           },
           error: err => {

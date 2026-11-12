@@ -1,0 +1,46 @@
+<mat-dialog-content>
+
+    <div id="img-box" class="clearfix">
+        @if(previewImgSrc()){
+        <img [src]="previewImgSrc()" alt="image" #previewImg>
+        }
+
+        <button matButton="elevated" id="selectButton" (click)="fileInput.click()">Select an image</button>
+        <input type="file" hidden #fileInput (change)="onSelectImage($event)">
+
+        <canvas #canvas style="display:none;"></canvas>
+    </div>
+
+    <mat-form-field appearance="fill" subscriptSizing="dynamic">
+        <mat-label>Title</mat-label>
+        <input type="text" matInput [formField]="newLibForm.title">
+        @if(newLibForm.title().touched() && newLibForm.title().invalid()){
+        <mat-error>
+            @for(error of newLibForm.title().errors(); track error){
+            {{error.message}}
+            }
+        </mat-error>
+        }
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" subscriptSizing="dynamic">
+        <mat-label>Description</mat-label>
+        <!--input type="text" matInput [formField]="inputForm.TextValue"-->
+        <textarea matInput [formField]="newLibForm.description" placeholder="Write here.." rows="5"></textarea>
+        @if(newLibForm.description().touched() && newLibForm.description().invalid()){
+        <mat-error>
+            @for(error of newLibForm.description().errors(); track error){
+            {{error.message}}
+            }
+        </mat-error>
+        }
+    </mat-form-field>
+
+    <mat-dialog-actions align="end" style="float:inline-end;">
+        <button matButton mat-dialog-close>Cancel</button>
+        <button matButton="filled" [mat-dialog-close]="result()" [disabled]="newLibForm().invalid()">
+            Submit
+        </button>
+    </mat-dialog-actions>
+
+</mat-dialog-content>
