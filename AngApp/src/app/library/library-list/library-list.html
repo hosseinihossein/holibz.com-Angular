@@ -10,7 +10,8 @@
 
     <mat-sidenav-content>
         <div style="float: inline-start;">
-            <button matMiniFab (click)="toggleSidenavOpen()">
+            <button matMiniFab (click)="toggleSidenavOpen()"
+                [matTooltip]="sidenavOpen() ? 'Close panel' : 'Open panel'">
                 <mat-icon>{{sidenavOpen() ? 'left_panel_close' : 'left_panel_open'}}</mat-icon>
             </button>
         </div>
