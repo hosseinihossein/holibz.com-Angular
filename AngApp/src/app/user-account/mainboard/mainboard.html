@@ -1,7 +1,7 @@
 <mat-tab-group dynamicHeight="">
     <mat-tab label="Libraries">
         <ng-template matTabContent>
-            <app-library-list [libIds]="libIdsResource.value() ?? []" [isMe]="isMe()"
+            <app-library-list [libIds]="libIdsResource.value()?.libIds ?? []" [isMe]="isMe()"
                 (reload)="libIdsResource.reload()">
             </app-library-list>
         </ng-template>

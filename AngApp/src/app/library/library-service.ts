@@ -1,7 +1,6 @@
 import { inject, Service } from '@angular/core';
 import { NewLibrary_ResultModel } from '../shared/dialogs/new-library-form/new-library-form';
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs';
 
 @Service()
 export class LibraryService {

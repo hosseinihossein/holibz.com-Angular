@@ -9,9 +9,11 @@
     </mat-sidenav>
 
     <mat-sidenav-content>
-        <button matMiniFab (click)="toggleSidenavOpen()" style="float: inline-start;">
-            <mat-icon>{{sidenavOpen() ? 'left_panel_close' : 'left_panel_open'}}</mat-icon>
-        </button>
+        <div style="float: inline-start;">
+            <button matMiniFab (click)="toggleSidenavOpen()">
+                <mat-icon>{{sidenavOpen() ? 'left_panel_close' : 'left_panel_open'}}</mat-icon>
+            </button>
+        </div>
         <div class="list">
             @for(libId of libIds(); track libId){
             <app-library-card [libraryId]="libId"></app-library-card>
