@@ -67,12 +67,12 @@
 
     <div style="margin: auto;display: flex; justify-content: space-evenly;">
         <button type="submit" form="login-with-github" matFab matTooltip="Login with GitHub"
-            [disabled]="loginForm.CfTurnstileResponse().invalid">
+            [disabled]="loginForm.CfTurnstileResponse().invalid()">
             <img priority width="64" height="64" ngSrc="https://img.icons8.com/sf-black-filled/64/github.png"
                 alt="github-logo" />
         </button>
         <button type="submit" form="login-with-google" matFab matTooltip="Login with Google"
-            [disabled]="loginForm.CfTurnstileResponse().invalid">
+            [disabled]="loginForm.CfTurnstileResponse().invalid()">
             <img priority width="48" height="48" ngSrc="https://img.icons8.com/color/48/google-logo.png"
                 alt="google-logo" />
         </button>
