@@ -14,26 +14,10 @@ export class ProfileService {
   readonly myProfileInfo = httpResource<UserProfileInfo>(() =>
     this.identityService.isAuthenticated() ?
       `${this.getProfileInfo_Url}${this.identityService.myIdentityInfo.value()?.id}` :
-      undefined,
-    {
-      parse: (res: any) => {
-        console.log("myProfileInfo res = " + JSON.stringify(res));
-        return {
-          avatarUrl: res.avatarUrl,
-          description: res.description,
-          name: res.name,
-        };
-      }
-    }
+      undefined
   );
 
-  constructor() {
-    effect(() => {
-      if (this.myProfileInfo.hasValue() && this.myProfileInfo.value()) {
-        console.log("myProfileInfo = " + JSON.stringify(this.myProfileInfo.value()));
-      }
-    });
-  }
+  constructor() { }
 
   getUserAvatarUrl(userId: string) {
     let httpParams = new HttpParams().set('userId', userId);
