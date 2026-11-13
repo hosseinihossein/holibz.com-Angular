@@ -1,5 +1,5 @@
 import { HttpClient, HttpParams, httpResource } from '@angular/common/http';
-import { inject, Service } from '@angular/core';
+import { effect, inject, Service } from '@angular/core';
 import { IdentityService } from '../../identity/identity-service';
 import { UserProfileInfo } from './profile';
 import { tap } from 'rxjs';
@@ -17,7 +17,13 @@ export class ProfileService {
       undefined
   );
 
-  constructor() { }
+  constructor() {
+    effect(() => {
+      if (this.myProfileInfo.hasValue() && this.myProfileInfo.value()) {
+        console.log("myProfileInfo = " + JSON.stringify(this.myProfileInfo.value()));
+      }
+    });
+  }
 
   getUserAvatarUrl(userId: string) {
     let httpParams = new HttpParams().set('userId', userId);
