@@ -1,5 +1,5 @@
 import { isPlatformBrowser, NgOptimizedImage } from '@angular/common';
-import { Component, inject, input, PLATFORM_ID } from '@angular/core';
+import { Component, effect, inject, input, PLATFORM_ID } from '@angular/core';
 import { MatCard, MatCardHeader, MatCardAvatar, MatCardTitle, MatCardSubtitle, MatCardContent } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
 import { Router, RouterLink } from '@angular/router';
@@ -34,7 +34,13 @@ export class LibraryCard {
       undefined
   });
 
-  constructor() { }
+  constructor() {
+    effect(() => {
+      if (this.libCardInfo.hasValue() && this.libCardInfo.value()) {
+        console.log("libCardInfo = " + JSON.stringify(this.libCardInfo.value()));
+      }
+    });
+  }
 
   openLibrary() {
     this.router.navigate(["/Library", this.libraryId()]);
