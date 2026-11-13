@@ -27,11 +27,12 @@ export class LibraryCard {
   libCardInfo = httpResource<LibraryCardModel>(() =>
     this.libService.libraryCardInfo_Url + this.libraryId()
   );
-  ownerUsername = httpResource<string>(() =>
-    this.libCardInfo.hasValue() ?
-      this.identityService.getUsername_Url + this.libCardInfo.value()?.ownerId :
+  ownerUsername = httpResource<{ username: string }>(() => {
+    const cardInfo = this.libCardInfo.value();
+    return cardInfo ?
+      this.identityService.getUsername_Url + cardInfo.ownerId :
       undefined
-  );
+  });
 
   constructor() { }
 

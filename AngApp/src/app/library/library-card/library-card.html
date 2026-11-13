@@ -9,8 +9,10 @@
         </mat-icon>
         }
         <mat-card-title>{{libCardInfo.value()?.title}}</mat-card-title>
-        <mat-card-subtitle>from <a [routerLink]='["/UserAccount/Profile/",libCardInfo.value()?.ownerId]'>
-                {{ownerUsername.value()}}</a>
+        <mat-card-subtitle>
+            <a [routerLink]='["/UserAccount/Profile/",libCardInfo.value()?.ownerId]'>
+                {{ownerUsername.value()?.username}}
+            </a>
         </mat-card-subtitle>
     </mat-card-header>
 
