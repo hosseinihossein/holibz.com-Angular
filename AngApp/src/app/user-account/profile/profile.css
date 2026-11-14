@@ -21,13 +21,4 @@ mat-card-subtitle{
     letter-spacing: 1px;
 }
 
-#matCardLabel{
-    position: absolute;
-    top: 0;
-    left: 8px;
-    background-color: var(--mat-sys-background);
-    margin: 0;
-    padding: 8px;
-    transform: translateY(-50%);
-    font-weight: 500;
-}
+

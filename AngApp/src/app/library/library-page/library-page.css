@@ -5,7 +5,7 @@ mat-card{
     display: block;
 }
 
-img#user-profile-img{
+img#header-img{
     width: 100px;
     height: 100px;
     object-fit: cover;

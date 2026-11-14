@@ -9,10 +9,11 @@ import { LibraryCardModel } from '../library-card/library-card';
 import { IdentityService } from '../../identity/identity-service';
 import { LibraryService } from '../library-service';
 import { NgOptimizedImage } from '@angular/common';
+import { CardTag } from '../../shared/components/card-tag/card-tag';
 
 @Component({
   imports: [MatCard, MatCardHeader, MatIcon, MatCardTitle, MatCardSubtitle, MatCardContent,
-    MatCardActions, RouterLink, MatButton, NgOptimizedImage
+    MatCardActions, RouterLink, MatButton, NgOptimizedImage, CardTag
   ],
   selector: 'app-library-page',
   styleUrl: './library-page.css',

@@ -1,4 +1,5 @@
 <mat-card appearance="outlined">
+    <app-card-tag iconName="person" tagName="Profile Setting"></app-card-tag>
     <mat-card-header>
         <div style="float: inline-start;position: relative;">
             <button matIconButton class="edit-btn" style="position: absolute;bottom: 0;right: -8px;"
@@ -21,7 +22,7 @@
 
         <div style="float: inline-start;position: relative;">
             <mat-card-title>
-                <p class="persian-font" style="margin: 0;">
+                <p style="margin: 0;">
                     {{profileService.myProfileInfo.value()?.name ?? "Name"}}
                     <button matIconButton class="edit-btn" style="transform: translateY(-4px);float: right;"
                         matTooltip="Edit name" (click)="setName()">
@@ -43,7 +44,7 @@
     </mat-card-header>
 
     <mat-card-content class="clearfix">
-        <pre>{{profileService.myProfileInfo.value()?.description ?? "Description ..."}}</pre>
+        <pre style="text-wrap: wrap;">{{profileService.myProfileInfo.value()?.description ?? "Description ..."}}</pre>
         <button matIconButton class="edit-btn" style="transform: translateY(-16px);float: right;"
             matTooltip="Edit description" (click)="setDescription()">
             <mat-icon>edit</mat-icon>

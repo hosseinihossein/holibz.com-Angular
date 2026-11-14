@@ -1,12 +1,13 @@
 <mat-card appearance="outlined">
+    <app-card-tag iconName="shelves" tagName="Library"></app-card-tag>
     <mat-card-header>
         <div style="float: inline-start;position: relative;">
             @if(libCardInfo.value()?.imageUrl){
             <img [ngSrc]="libCardInfo.value()!.imageUrl!" priority width="100" height="100" alt="user image"
-                id="user-profile-img">
+                id="header-img">
             }
             @else {
-            <mat-icon style="font-size: 100px;width: 100px;height: 100px;">account_circle</mat-icon>
+            <mat-icon style="font-size: 100px;width: 100px;height: 100px;">shelves</mat-icon>
             }
         </div>
 
@@ -26,12 +27,12 @@
     </mat-card-header>
 
     <mat-card-content class="clearfix">
-        <pre>{{libCardInfo.value()?.description}}</pre>
+        <pre style="text-wrap: wrap;">{{libCardInfo.value()?.description}}</pre>
     </mat-card-content>
 
     <mat-card-actions align="end">
         @if(isMe()){
-        <a matButton="" [routerLink]="['/Library/Setting']">
+        <a matButton="" [routerLink]="['/Library/Setting',libId()]">
             <mat-icon>edit_note</mat-icon>
             Edit Library
         </a>
@@ -39,5 +40,3 @@
     </mat-card-actions>
 
 </mat-card>
-
-<!--app-mainboard [userId]="userId()!"></app-mainboard-->

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { afterNextRender, Component, DOCUMENT, effect, inject, input, OnInit, signal } from '@angular/core';
 import { FieldTree } from '@angular/forms/signals';
-import { SharedConfigs } from '../services/shared-configs';
+import { SharedConfigs } from '../../services/shared-configs';
 
 declare const turnstile: any;
 

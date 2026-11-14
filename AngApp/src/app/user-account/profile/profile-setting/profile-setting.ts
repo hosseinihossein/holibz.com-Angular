@@ -4,7 +4,7 @@ import { MatButton, MatFabButton, MatIconButton } from '@angular/material/button
 import { MatCardModule } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
-import { WaitSpinner } from '../../../shared/wait-spinner/wait-spinner';
+import { WaitSpinner } from '../../../shared/components/wait-spinner/wait-spinner';
 import { MatDialog } from '@angular/material/dialog';
 import { httpResource } from '@angular/common/http';
 import { IdentityService } from '../../../identity/identity-service';
@@ -15,11 +15,11 @@ import { ConfirmDelete, ConfirmDeleteDataModel, ConfirmDeleteResultModel } from 
 import { EditInputText, EditInputTextDataModel, EditInputTextResultModel } from '../../../shared/dialogs/edit-input-text/edit-input-text';
 import { EditTextarea, EditTextareaDataModel, EditTextareaResultModel } from '../../../shared/dialogs/edit-textarea/edit-textarea';
 import { RouterLink } from '@angular/router';
+import { CardTag } from '../../../shared/components/card-tag/card-tag';
 
 @Component({
   imports: [MatCardModule, MatIcon, MatIconButton, MatTooltip, NgOptimizedImage, WaitSpinner, RouterLink,
-    MatButton
-  ],
+    MatButton, CardTag],
   selector: 'app-profile-setting',
   styleUrl: './profile-setting.css',
   templateUrl: './profile-setting.html',

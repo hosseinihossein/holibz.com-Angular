@@ -4,16 +4,16 @@ import { MatButton, MatAnchor } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { WaitSpinner } from '../../shared/wait-spinner/wait-spinner';
 import { IdentityService } from '../../identity/identity-service';
 import { ProfileService } from './profile-service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { httpResource } from '@angular/common/http';
 import { Mainboard } from '../mainboard/mainboard';
+import { CardTag } from '../../shared/components/card-tag/card-tag';
 
 @Component({
-  imports: [MatCardModule, MatIcon, MatButton, NgOptimizedImage, WaitSpinner,
-    MatAnchor, RouterLink, Mainboard],
+  imports: [MatCardModule, MatIcon, MatButton, NgOptimizedImage,
+    MatAnchor, RouterLink, Mainboard, CardTag],
   selector: 'app-profile',
   styleUrl: './profile.css',
   templateUrl: './profile.html',

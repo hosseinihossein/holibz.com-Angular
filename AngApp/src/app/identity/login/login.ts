@@ -4,14 +4,14 @@ import { MatError, MatFormField, MatLabel, MatSuffix } from '@angular/material/f
 import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { WaitSpinner } from '../../shared/wait-spinner/wait-spinner';
+import { WaitSpinner } from '../../shared/components/wait-spinner/wait-spinner';
 import { NgOptimizedImage } from '@angular/common';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatButton, MatFabButton } from '@angular/material/button';
 import { firstValueFrom } from 'rxjs';
 import { HttpErrorResponse, HttpEventType, HttpStatusCode } from '@angular/common/http';
 import { IdentityService } from '../identity-service';
-import { Turnstile } from '../../shared/turnstile/turnstile';
+import { Turnstile } from '../../shared/components/turnstile/turnstile';
 
 @Component({
   imports: [FormRoot, MatFormField, MatLabel, MatInput, FormField, MatError, MatIcon, MatSuffix,
