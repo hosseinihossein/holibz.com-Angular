@@ -1,7 +1,7 @@
 import { RenderMode, ServerRoute } from '@angular/ssr';
 
 export const serverRoutes: ServerRoute[] = [
-  { path: '', renderMode: RenderMode.Client },
+  { path: '', renderMode: RenderMode.Prerender },//RenderMode.Client wont create index.html
   { path: 'Identity/Login', renderMode: RenderMode.Prerender },
   { path: 'Identity/Signup', renderMode: RenderMode.Prerender },
   { path: 'Identity/ResetPassword', renderMode: RenderMode.Prerender },
