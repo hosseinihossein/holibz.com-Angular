@@ -1,5 +1,5 @@
 <mat-card appearance="outlined">
-    <span id="matCardLabel">User Profile</span>
+    <span id="matCardLabel"><mat-icon>person</mat-icon> Profile</span>
     <mat-card-header>
         <div style="float: inline-start;position: relative;">
             @if(profileInfo.value()?.avatarUrl){
@@ -27,7 +27,7 @@
     </mat-card-header>
 
     <mat-card-content class="clearfix">
-        <pre>{{profileInfo.value()?.description}}</pre>
+        <pre style="text-wrap: wrap;">{{profileInfo.value()?.description}}</pre>
     </mat-card-content>
 
     <mat-card-actions align="end">

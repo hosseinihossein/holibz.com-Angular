@@ -1,7 +1,7 @@
 mat-card{
     width: 50vw;
     min-width: 370px;
-    margin: 0px auto 16px;
+    margin: 16px auto;
     display: block;
 }
 
@@ -25,8 +25,9 @@ mat-card-subtitle{
     position: absolute;
     top: 0;
     left: 8px;
-    background-color: var(--mat-sys-container);
+    background-color: var(--mat-sys-background);
     margin: 0;
     padding: 8px;
     transform: translateY(-50%);
+    font-weight: 500;
 }
