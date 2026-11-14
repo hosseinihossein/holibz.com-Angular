@@ -1,6 +1,6 @@
-import { isPlatformBrowser, NgOptimizedImage } from '@angular/common';
-import { Component, effect, inject, input, PLATFORM_ID } from '@angular/core';
-import { MatCard, MatCardHeader, MatCardAvatar, MatCardTitle, MatCardSubtitle, MatCardContent } from '@angular/material/card';
+import { NgOptimizedImage } from '@angular/common';
+import { Component, inject, input } from '@angular/core';
+import { MatCard, MatCardHeader, MatCardAvatar, MatCardTitle, MatCardSubtitle, MatCardContent, MatCardFooter } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
 import { Router, RouterLink } from '@angular/router';
 import { LibraryService } from '../library-service';
@@ -9,7 +9,7 @@ import { IdentityService } from '../../identity/identity-service';
 
 @Component({
   imports: [MatCard, MatCardHeader, MatCardAvatar, MatCardTitle, MatCardSubtitle, MatCardContent,
-    MatIcon, NgOptimizedImage, RouterLink],
+    MatIcon, NgOptimizedImage, RouterLink, MatCardFooter],
   selector: 'app-library-card',
   styleUrl: './library-card.css',
   templateUrl: './library-card.html',
@@ -34,13 +34,7 @@ export class LibraryCard {
       undefined
   });
 
-  constructor() {
-    effect(() => {
-      if (this.libCardInfo.hasValue() && this.libCardInfo.value()) {
-        console.log("libCardInfo = " + JSON.stringify(this.libCardInfo.value()));
-      }
-    });
-  }
+  constructor() { }
 
   openLibrary() {
     this.router.navigate(["/Library", this.libraryId()]);

@@ -1,1 +1,43 @@
-<p>library-page works!</p>
+<mat-card appearance="outlined">
+    <mat-card-header>
+        <div style="float: inline-start;position: relative;">
+            @if(libCardInfo.value()?.imageUrl){
+            <img [ngSrc]="libCardInfo.value()!.imageUrl!" priority width="100" height="100" alt="user image"
+                id="user-profile-img">
+            }
+            @else {
+            <mat-icon style="font-size: 100px;width: 100px;height: 100px;">account_circle</mat-icon>
+            }
+        </div>
+
+        <div style="float: inline-start;position: relative;">
+            <mat-card-title>
+                <p style="margin: 0;">
+                    {{libCardInfo.value()?.title}}
+                </p>
+            </mat-card-title>
+
+            <mat-card-subtitle>
+                {{ownerUsername()}}
+            </mat-card-subtitle>
+
+        </div>
+
+    </mat-card-header>
+
+    <mat-card-content class="clearfix">
+        <pre>{{libCardInfo.value()?.description}}</pre>
+    </mat-card-content>
+
+    <mat-card-actions align="end">
+        @if(isMe()){
+        <a matButton="" [routerLink]="['/Library/Setting']">
+            <mat-icon>edit_note</mat-icon>
+            Edit Library
+        </a>
+        }
+    </mat-card-actions>
+
+</mat-card>
+
+<!--app-mainboard [userId]="userId()!"></app-mainboard-->

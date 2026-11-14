@@ -1,6 +1,5 @@
 {
   "routes": {
-    "/": {},
     "/Identity/Login": {},
     "/Identity/ResetPassword": {},
     "/Identity/Signup": {}

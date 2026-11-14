@@ -10,7 +10,7 @@
         }
         <mat-card-title>{{libCardInfo.value()?.title}}</mat-card-title>
         <mat-card-subtitle>
-            <a [routerLink]='["/UserAccount/Profile/",libCardInfo.value()?.ownerId]'>
+            <a [routerLink]="['/UserAccount/Profile', libCardInfo.value()?.ownerId]" style="text-wrap: wrap;">
                 {{ownerUsername.value()?.username}}
             </a>
         </mat-card-subtitle>
@@ -18,11 +18,12 @@
 
     <mat-card-content>
         <p style="font-size: 12px;">{{libCardInfo.value()?.description}}</p>
-        <!--h4 style="margin: 8px 0;">Shelves:</h4>
-        <ul style="margin: 0;padding-left: 16px;">
-            @for(shelfTitle of libCardInfo.value()?.shelves; track shelfTitle){
-            <li>{{shelfTitle}}</li>
-            }
-        </ul-->
     </mat-card-content>
+
+    <mat-card-footer>
+        <mat-icon>bookmark</mat-icon>105
+        <mat-icon>shelves</mat-icon>7
+        <mat-icon>docs</mat-icon>53
+    </mat-card-footer>
+
 </mat-card>

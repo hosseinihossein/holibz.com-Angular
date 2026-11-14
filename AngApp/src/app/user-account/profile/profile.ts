@@ -23,8 +23,8 @@ export class Profile {
   profileService = inject(ProfileService);
   activatedRoute = inject(ActivatedRoute);
 
-  private params = toSignal(this.activatedRoute.paramMap)
-  userId = computed(() =>
+  private params = toSignal(this.activatedRoute.paramMap);
+  readonly userId = computed(() =>
     this.params()?.get("userId") ?? this.identityService.myIdentityInfo.value()?.id
   );
   isMe = computed(() => this.userId() && this.userId() === this.identityService.myIdentityInfo.value()?.id);
