@@ -1,4 +1,5 @@
 <mat-card appearance="outlined">
+    <span id="matCardLabel">User Profile</span>
     <mat-card-header>
         <div style="float: inline-start;position: relative;">
             @if(profileInfo.value()?.avatarUrl){
@@ -41,7 +42,3 @@
 </mat-card>
 
 <app-mainboard [userId]="userId()!"></app-mainboard>
-
-@if(displayWaitSpinner()){
-<app-wait-spinner></app-wait-spinner>
-}

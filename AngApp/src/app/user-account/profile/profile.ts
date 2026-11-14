@@ -19,28 +19,26 @@ import { Mainboard } from '../mainboard/mainboard';
   templateUrl: './profile.html',
 })
 export class Profile {
-  identityService = inject(IdentityService);
-  profileService = inject(ProfileService);
-  activatedRoute = inject(ActivatedRoute);
+  readonly identityService = inject(IdentityService);
+  readonly profileService = inject(ProfileService);
+  readonly activatedRoute = inject(ActivatedRoute);
 
-  private params = toSignal(this.activatedRoute.paramMap);
+  private readonly params = toSignal(this.activatedRoute.paramMap);
   readonly userId = computed(() =>
     this.params()?.get("userId") ?? this.identityService.myIdentityInfo.value()?.id
   );
-  isMe = computed(() => this.userId() && this.userId() === this.identityService.myIdentityInfo.value()?.id);
+  readonly isMe = computed(() => this.userId() && this.userId() === this.identityService.myIdentityInfo.value()?.id);
 
-  profileInfo = httpResource<UserProfileInfo>(() =>
+  readonly profileInfo = httpResource<UserProfileInfo>(() =>
     this.identityService.isAuthenticated() ?
       this.profileService.getProfileInfo_Url + this.userId() :
       undefined
   );
-  profileUsername = httpResource<{ username: string }>(() =>
+  readonly profileUsername = httpResource<{ username: string }>(() =>
     this.identityService.isAuthenticated() ?
       this.identityService.getUsername_Url + this.userId() :
       undefined
   );
-
-  displayWaitSpinner = signal(false);
 
   constructor() { }
 
