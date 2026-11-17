@@ -1,0 +1,26 @@
+<mat-sidenav-container>
+    <mat-sidenav id="" [opened]="sidenavOpen()" mode="side" position="start" style="position: absolute;">
+        @if(isMine()){
+        <button matButton="" (click)="openNewDocForm()">
+            <mat-icon>add_box</mat-icon>
+            Create New Document
+        </button>
+        }
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <div style="float: inline-start;">
+            <button matMiniFab (click)="toggleSidenavOpen()"
+                [matTooltip]="sidenavOpen() ? 'Close panel' : 'Open panel'">
+                <mat-icon>{{sidenavOpen() ? 'left_panel_close' : 'left_panel_open'}}</mat-icon>
+            </button>
+        </div>
+        <div class="list">
+            @for(docId of docIds(); track docId){
+            <app-document-card [docId]="docId"></app-document-card>
+            }
+        </div>
+
+    </mat-sidenav-content>
+
+</mat-sidenav-container>

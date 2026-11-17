@@ -1,0 +1,54 @@
+mat-card {
+    max-width: 300px;
+    height: 400px;
+    transition: all 150ms;
+    position: relative;
+}
+mat-card.raised{
+    border: 1px solid var(--mat-sys-outline-variant);
+}
+
+#remove-btn{
+    position: absolute;
+    top: -16px;
+    right: -16px;
+}
+#remove-btn:hover{
+    color: red;
+}
+
+img.owner-avatar {
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+    border-radius: 50%;
+}
+mat-card-title{
+    font-size: 16px;
+}
+mat-card-subtitle{
+    font-size: 12px;
+}
+
+mat-card-content{
+    height: 200px;
+    overflow: auto;
+    padding: 0;
+    flex: 1 1 auto;
+}
+
+mat-card-content #main-img {
+    width: 100%;
+    object-fit: contain;
+    transition: all 150ms;
+}
+mat-card-content p/*,
+mat-card-content h3*/{
+    padding: 0 8px;
+}
+mat-card-content p{
+    font-size: 14px;
+}
+/*mat-card-content h3{
+    margin: 8px;
+}*/

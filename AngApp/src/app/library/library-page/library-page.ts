@@ -31,12 +31,12 @@ export class LibraryPage {
   readonly libId = computed(() => this.params()?.get("libId"));
 
   libCardInfo = httpResource<LibraryCardModel>(() =>
-    this.libService.libraryCardInfo_Url + this.libId()
+    this.libService.GetLibraryCardInfo_Url + this.libId()
   );
 
   readonly isMine = computed(() => this.identityService.isAuthenticated() &&
-    this.libCardInfo.hasValue() &&
-    this.libCardInfo.value().ownerId === this.identityService.myIdentityInfo.value()?.id
+    this.libCardInfo.value() &&
+    this.libCardInfo.value()!.ownerId === this.identityService.myIdentityInfo.value()?.id
   );
 
   ownerUsernameResource = httpResource<{ username: string }>(() => {

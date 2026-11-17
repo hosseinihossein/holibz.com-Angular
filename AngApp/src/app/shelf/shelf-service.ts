@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Service } from '@angular/core';
 import { NewLibrary_ResultModel } from '../shared/dialogs/new-library-form/new-library-form';
 
@@ -11,16 +11,51 @@ export class ShelfService {
 
     constructor() { }
 
-    submitNewShelf(model: NewLibrary_ResultModel) {
+    submitNewShelf(model: { newShelfModel: NewLibrary_ResultModel, parentLibId: string }) {
         let formData = new FormData();
-        formData.append("Title", model.title)
-        if (model.description) {
-            formData.append("Description", model.description)
+        formData.append("Title", model.newShelfModel.title);
+        formData.append("ParentLibId", model.parentLibId);
+        if (model.newShelfModel.description) {
+            formData.append("Description", model.newShelfModel.description);
         }
-        if (model.image) {
-            formData.append("Image", model.image);
+        if (model.newShelfModel.image) {
+            formData.append("Image", model.newShelfModel.image);
         }
 
         return this.httpClient.post<{ success: boolean }>("/api/Shelf/SubmitNewShelf", formData);
+    }
+
+    submitImage(image: File, shelfId: string) {
+        const formData = new FormData();
+        formData.append('imageFile', image);
+        formData.append('shelfId', shelfId);
+        return this.httpClient.post<{ success: boolean }>(
+            "/api/Shelf/SubmitImage", formData
+        );
+    }
+
+    deleteImage(shelfId: string) {
+        const httpParams = new HttpParams().append('shelfId', shelfId);
+        return this.httpClient.delete<{ success: boolean }>(
+            "/api/Shelf/DeleteImage", { params: httpParams }
+        );
+    }
+
+    submitTitle(title: string, shelfId: string) {
+        const formData = new FormData();
+        formData.append("title", title);
+        formData.append("shelfId", shelfId);
+        return this.httpClient.post<{ success: boolean }>(
+            `/api/Shelf/SubmitTitle`, formData
+        );
+    }
+
+    submitDescription(description: string, shelfId: string) {
+        const formData = new FormData();
+        formData.append("description", description);
+        formData.append("shelfId", shelfId);
+        return this.httpClient.post<{ success: boolean }>(
+            `/api/Shelf/SubmitDescription`, formData
+        );
     }
 }

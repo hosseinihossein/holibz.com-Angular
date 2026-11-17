@@ -22,6 +22,7 @@ import { Result, ResultDataModel } from '../../shared/dialogs/result/result';
 export class ShelfList {
   readonly shelfIds = input.required<string[]>();
   readonly isMine = input(false);
+  readonly parentLibId = input<string>();
   readonly reload = output<any>();
 
   dialog = inject(MatDialog);
@@ -38,12 +39,15 @@ export class ShelfList {
   }
 
   openNewShelfForm() {
+    if (!this.isMine() || !this.parentLibId()) {
+      return;
+    }
     this.identityService.getAntiForgeryToken.reload();
     this.dialog.open<NewLibraryForm, undefined, NewLibrary_ResultModel>(NewLibraryForm)
       .afterClosed().subscribe((result) => {
         if (result) {
           this.displayWaitSpinner.set(true);
-          this.shelfService.submitNewShelf(result).subscribe({
+          this.shelfService.submitNewShelf({ newShelfModel: result, parentLibId: this.parentLibId()! }).subscribe({
             next: res => {
               if (res && res.success) {
                 this.reload.emit(undefined);

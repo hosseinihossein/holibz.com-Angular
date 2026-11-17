@@ -8,7 +8,7 @@ import { MatIcon } from '@angular/material/icon';
 import { RouterLink, ActivatedRoute, Router } from '@angular/router';
 import { IdentityService } from '../../../identity/identity-service';
 import { CardTag } from '../../../shared/components/card-tag/card-tag';
-import { LibraryCardModel } from '../../library-card/library-card';
+import { LibraryCardModel as LibraryCardInfo } from '../../library-card/library-card';
 import { LibraryService } from '../../library-service';
 import { WaitSpinner } from '../../../shared/components/wait-spinner/wait-spinner';
 import { MatDialog } from '@angular/material/dialog';
@@ -36,8 +36,8 @@ export class LibrarySetting {
   private params = toSignal(this.activatedRoute.paramMap);
   readonly libId = computed(() => this.params()?.get("libId"));
 
-  libCardInfo = httpResource<LibraryCardModel>(() =>
-    this.libService.libraryCardInfo_Url + this.libId()
+  libCardInfo = httpResource<LibraryCardInfo>(() =>
+    this.libService.GetLibraryCardInfo_Url + this.libId()
   );
 
   readonly isMine = computed(() => this.identityService.isAuthenticated() &&
@@ -82,9 +82,9 @@ export class LibrarySetting {
             this.dialog.open<Result, ResultDataModel>(Result, {
               data: {
                 status: "warning",
-                title: "Submit User Image",
+                title: "Submit Library Image",
                 description: [
-                  "Something went wrong during submitting user image!",
+                  "Something went wrong during submitting library image!",
                 ],
               }
             });
@@ -117,9 +117,9 @@ export class LibrarySetting {
             this.dialog.open(Result, {
               data: {
                 status: "warning",
-                title: "Delete User Image",
+                title: "Delete Library Image",
                 description: [
-                  "Something went wrong during deleting user image!",
+                  "Something went wrong during deleting library image!",
                 ],
               }
             });
@@ -154,9 +154,9 @@ export class LibrarySetting {
             this.dialog.open(Result, {
               data: {
                 status: "warning",
-                title: "Submit Full Name",
+                title: "Submit Title",
                 description: [
-                  "Something went wrong during submitting full name!",
+                  "Something went wrong during submitting title!",
                 ],
               }
             });

@@ -17,7 +17,7 @@ export class Mainboard {
   identityServise = inject(IdentityService);
   libService = inject(LibraryService);
 
-  libIdsResource = httpResource<{ libIds: string[] }>(() => this.libService.getLibraryIdsOfUser_Url + this.userId());
+  libIdsResource = httpResource<{ libIds: string[] }>(() => this.libService.GetLibraryIdsOfUser_Url + this.userId());
 
   isMe = computed(() => this.identityServise.isAuthenticated() &&
     this.userId() === this.identityServise.myIdentityInfo.value()?.id

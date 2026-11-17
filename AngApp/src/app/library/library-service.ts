@@ -6,8 +6,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 export class LibraryService {
     private readonly httpClient = inject(HttpClient);
 
-    readonly libraryCardInfo_Url = "/api/library/GetLibraryCardInfo?libId=";
-    readonly getLibraryIdsOfUser_Url = "/api/Library/GetLibraryIdsOfUser?userId=";
+    readonly GetLibraryCardInfo_Url = "/api/library/GetLibraryCardInfo?libId=";
+    readonly GetLibraryIdsOfUser_Url = "/api/Library/GetLibraryIdsOfUser?userId=";
 
     constructor() { }
 
