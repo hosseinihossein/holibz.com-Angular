@@ -1,7 +1,7 @@
 mat-card{
     width: 50vw;
     min-width: 370px;
-    margin: 0px auto 16px;
+    margin: 16px auto;
     display: block;
 }
 

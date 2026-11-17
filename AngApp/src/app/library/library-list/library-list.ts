@@ -6,7 +6,7 @@ import { MatIcon } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { NewLibrary_ResultModel, NewLibraryForm } from '../../shared/dialogs/new-library-form/new-library-form';
 import { LibraryService } from '../library-service';
-import { Result, ResultDataModel as Result_DataModel } from '../../shared/dialogs/result/result';
+import { Result, ResultDataModel } from '../../shared/dialogs/result/result';
 import { MatTooltip } from '@angular/material/tooltip';
 import { IdentityService } from '../../identity/identity-service';
 
@@ -18,9 +18,9 @@ import { IdentityService } from '../../identity/identity-service';
   templateUrl: './library-list.html',
 })
 export class LibraryList {
-  libIds = input.required<string[]>();
-  isMe = input(false);
-  reload = output<any>();
+  readonly libIds = input.required<string[]>();
+  readonly isMine = input(false);
+  readonly reload = output<any>();
 
   dialog = inject(MatDialog);
   libService = inject(LibraryService);
@@ -50,7 +50,7 @@ export class LibraryList {
             },
             error: err => {
               this.displayWaitSpinner.set(false);
-              this.dialog.open<Result, Result_DataModel>(Result, {
+              this.dialog.open<Result, ResultDataModel>(Result, {
                 data: {
                   description: [
                     'Something went wrong during submitting the new library!',

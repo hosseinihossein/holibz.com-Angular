@@ -31,7 +31,7 @@
     </mat-card-content>
 
     <mat-card-actions align="end">
-        @if(isMe()){
+        @if(isMine()){
         <a matButton="" [routerLink]="['/Library/Setting',libId()]">
             <mat-icon>edit_note</mat-icon>
             Edit Library
@@ -40,3 +40,6 @@
     </mat-card-actions>
 
 </mat-card>
+
+<app-shelf-list [shelfIds]="shelfIds.value()?.shelfIds ?? []" [isMine]="isMine()" (reload)="shelfIds.reload()">
+</app-shelf-list>

@@ -31,12 +31,12 @@ export class Profile {
 
   readonly profileInfo = httpResource<UserProfileInfo>(() =>
     this.identityService.isAuthenticated() ?
-      this.profileService.getProfileInfo_Url + this.userId() :
+      this.profileService.GetProfileInfo_Url + this.userId() :
       undefined
   );
   readonly profileUsername = httpResource<{ username: string }>(() =>
     this.identityService.isAuthenticated() ?
-      this.identityService.getUsername_Url + this.userId() :
+      this.identityService.GetUsername_Url + this.userId() :
       undefined
   );
 

@@ -7,7 +7,7 @@ export class LibraryService {
     private readonly httpClient = inject(HttpClient);
 
     readonly libraryCardInfo_Url = "/api/library/GetLibraryCardInfo?libId=";
-    readonly getLibraryIds_Url = "/api/Library/GetLibraryIds?userId=";
+    readonly getLibraryIdsOfUser_Url = "/api/Library/GetLibraryIdsOfUser?userId=";
 
     constructor() { }
 

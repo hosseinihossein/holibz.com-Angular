@@ -55,7 +55,7 @@ export class LibrarySetting {
 
   constructor() {
     effect(() => {
-      if (!this.isMine()) {
+      if (this.libCardInfo.value() && !this.isMine()) {
         this.router.navigate(['Library', this.libId()]);
       }
     });

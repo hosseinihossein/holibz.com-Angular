@@ -10,10 +10,12 @@ import { IdentityService } from '../../identity/identity-service';
 import { LibraryService } from '../library-service';
 import { NgOptimizedImage } from '@angular/common';
 import { CardTag } from '../../shared/components/card-tag/card-tag';
+import { ShelfList } from '../../shelf/shelf-list/shelf-list';
+import { ShelfService } from '../../shelf/shelf-service';
 
 @Component({
   imports: [MatCard, MatCardHeader, MatIcon, MatCardTitle, MatCardSubtitle, MatCardContent,
-    MatCardActions, RouterLink, MatButton, NgOptimizedImage, CardTag
+    MatCardActions, RouterLink, MatButton, NgOptimizedImage, CardTag, ShelfList
   ],
   selector: 'app-library-page',
   styleUrl: './library-page.css',
@@ -23,6 +25,7 @@ export class LibraryPage {
   readonly activatedRoute = inject(ActivatedRoute);
   readonly identityService = inject(IdentityService);
   readonly libService = inject(LibraryService);
+  readonly shelfService = inject(ShelfService);
 
   private params = toSignal(this.activatedRoute.paramMap);
   readonly libId = computed(() => this.params()?.get("libId"));
@@ -31,21 +34,27 @@ export class LibraryPage {
     this.libService.libraryCardInfo_Url + this.libId()
   );
 
-  readonly isMe = computed(() => this.identityService.isAuthenticated() &&
+  readonly isMine = computed(() => this.identityService.isAuthenticated() &&
     this.libCardInfo.hasValue() &&
     this.libCardInfo.value().ownerId === this.identityService.myIdentityInfo.value()?.id
   );
 
   ownerUsernameResource = httpResource<{ username: string }>(() => {
     const cardInfo = this.libCardInfo.value();
-    return this.isMe() && cardInfo ?
-      this.identityService.getUsername_Url + cardInfo.ownerId :
+    return this.isMine() && cardInfo ?
+      this.identityService.GetUsername_Url + cardInfo.ownerId :
       undefined
   });
   ownerUsername = computed(() =>
-    this.isMe() ?
+    this.isMine() ?
       this.identityService.myIdentityInfo.value()?.userName :
       this.ownerUsernameResource.value()?.username
+  );
+
+  readonly shelfIds = httpResource<{ shelfIds: string[] }>(() =>
+    this.libId() ?
+      this.shelfService.GetShelfIdsOfLib_Url + this.libId() :
+      undefined
   );
 
   constructor() { }

@@ -1,6 +1,6 @@
 <mat-sidenav-container>
     <mat-sidenav id="" [opened]="sidenavOpen()" mode="side" position="start" style="position: absolute;">
-        @if(isMe()){
+        @if(isMine()){
         <button matButton="" (click)="openNewLibraryForm()">
             <mat-icon>add_box</mat-icon>
             Create New Library

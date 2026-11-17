@@ -30,7 +30,7 @@ export class LibraryCard {
   ownerUsername = httpResource<{ username: string }>(() => {
     const cardInfo = this.libCardInfo.value();
     return cardInfo ?
-      this.identityService.getUsername_Url + cardInfo.ownerId :
+      this.identityService.GetUsername_Url + cardInfo.ownerId :
       undefined
   });
 

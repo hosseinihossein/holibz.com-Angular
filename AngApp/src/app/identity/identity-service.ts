@@ -22,7 +22,7 @@ export class IdentityService {
     }
   );
 
-  readonly getUsername_Url = "/api/identity/GetUsername?userId=";
+  readonly GetUsername_Url = "/api/identity/GetUsername?userId=";
 
   readonly getAntiForgeryToken = httpResource(() => this.isBrowser ? "/api/identity/GetAntiForgeryToken" : undefined);
 

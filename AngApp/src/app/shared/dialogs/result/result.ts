@@ -14,15 +14,15 @@ export class Result {
   readonly data = inject<ResultDataModel>(MAT_DIALOG_DATA);
   readonly router = inject(Router);
 
-  goToLinkAddress(){
-    if(this.data.link){
+  goToLinkAddress() {
+    if (this.data.link) {
       this.router.navigate([this.data.link.address]);
     }
   }
 }
 export class ResultDataModel {
   status?: "success" | "info" | "warning" = "info";
-  title?:string; 
-  description?:string[]; 
-  link?:{name:string, address:string};
+  title?: string;
+  description?: string[];
+  link?: { name: string, address: string };
 }

@@ -9,11 +9,12 @@ export class ProfileService {
   private readonly httpClient = inject(HttpClient);
   private readonly identityService = inject(IdentityService);
 
-  readonly getProfileInfo_Url = "/api/UserProfile/GetProfileInfo?userId=";
+  readonly GetProfileInfo_Url = "/api/UserProfile/GetProfileInfo?userId=";
+  readonly GetAvatarUrl_Url = "/api/UserProfile/GetAvatarUrl?userId=";
 
   readonly myProfileInfo = httpResource<UserProfileInfo>(() =>
     this.identityService.isAuthenticated() ?
-      `${this.getProfileInfo_Url}${this.identityService.myIdentityInfo.value()?.id}` :
+      `${this.GetProfileInfo_Url}${this.identityService.myIdentityInfo.value()?.id}` :
       undefined
   );
 

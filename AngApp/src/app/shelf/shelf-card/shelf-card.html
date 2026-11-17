@@ -1,0 +1,41 @@
+<mat-expansion-panel hideToggle expanded>
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            <div class="icon-box" [matBadge]="shelfCardInfo.value()?.totalNumberOfDocs" matBadgePosition="above">
+                @if(shelfCardInfo.hasValue() && shelfCardInfo.value().imageUrl){
+                <img [ngSrc]="shelfCardInfo.value().imageUrl!" width="40" height="40" alt="shelf image">
+                }
+                @else {
+                <mat-icon>newsstand</mat-icon>
+                }
+            </div>
+            &nbsp;
+            &nbsp;
+            {{shelfCardInfo.value()?.title}}
+        </mat-panel-title>
+        <mat-panel-description>
+            {{shelfCardInfo.value()?.description}}
+        </mat-panel-description>
+
+        @if(ownerAvatarUrl()){
+        <img id="owner-username" [ngSrc]="ownerAvatarUrl()!" priority width="50" height="50" alt="user image"
+            [matTooltip]="ownerUsername()">
+        }
+        @else {
+        <mat-icon style="font-size: 50px;width: 50px;height: 50px;"
+            [matTooltip]="ownerUsername()">account_circle</mat-icon>
+        }
+    </mat-expansion-panel-header>
+
+    <div class="listOfDocs">
+        @for (docId of docIds.value()?.docIds; track docId) {
+        <app-document-mini-card [docId]="docId" (click)="router.navigate(['/DocumentPage',docId])"
+            style="cursor: pointer;"></app-document-mini-card>
+        }
+    </div>
+
+    <mat-action-row>
+        <button matButton (click)="openShelf()">Open</button>
+    </mat-action-row>
+
+</mat-expansion-panel>

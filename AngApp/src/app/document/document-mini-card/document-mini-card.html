@@ -1,0 +1,18 @@
+<mat-card [appearance]="appearance()" (mouseenter)="raiseCard()" (mouseleave)="outlineCard()"
+    [class.raised]="appearance()==='raised'">
+    <mat-card-header style="padding: 4px;">
+        <mat-card-title>
+            {{docCardInfo.value()?.title}}
+        </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        @if(docCardInfo.value()?.imageUrl){
+        <img mat-card-image #mainImg [ngSrc]="docCardInfo.value()?.imageUrl!" width="100" height="100"
+            alt="document image">
+        }
+        <p [class.display-description]="!docCardInfo.value()?.imageUrl || appearance()==='raised'">
+            {{docCardInfo.value()?.description}}
+        </p>
+    </mat-card-content>
+</mat-card>
