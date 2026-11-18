@@ -17,19 +17,21 @@
             {{shelfCardInfo.value()?.description}}
         </mat-panel-description>
 
-        @if(ownerAvatarUrl()){
-        <img id="owner-username" [ngSrc]="ownerAvatarUrl()!" priority width="50" height="50" alt="user image"
-            [matTooltip]="ownerUsername()">
-        }
-        @else {
-        <mat-icon style="font-size: 50px;width: 50px;height: 50px;"
-            [matTooltip]="ownerUsername()">account_circle</mat-icon>
-        }
+        <a [routerLink]="['/UserAccount/Profile',shelfCardInfo.value()?.ownerId]">
+            @if(ownerAvatarUrl()){
+            <img id="owner-username" [ngSrc]="ownerAvatarUrl()!" priority width="40" height="40" alt="user image"
+                [matTooltip]="ownerUsername()">
+            }
+            @else {
+            <mat-icon style="font-size: 50px;width: 50px;height: 50px;"
+                [matTooltip]="ownerUsername()">account_circle</mat-icon>
+            }
+        </a>
     </mat-expansion-panel-header>
 
     <div class="listOfDocs">
         @for (docId of docIds.value()?.docIds; track docId) {
-        <app-document-mini-card [docId]="docId" (click)="router.navigate(['/DocumentPage',docId])"
+        <app-document-mini-card [docId]="docId" (click)="router.navigate(['/Document',docId])"
             style="cursor: pointer;"></app-document-mini-card>
         }
     </div>

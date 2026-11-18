@@ -9,15 +9,14 @@ import { httpResource } from '@angular/common/http';
 import { MatBadge } from '@angular/material/badge';
 import { ProfileService } from '../../user-account/profile/profile-service';
 import { IdentityService } from '../../identity/identity-service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { DocumentService } from '../../document/document-service';
 import { DocumentMiniCard } from '../../document/document-mini-card/document-mini-card';
 
 @Component({
   imports: [MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle,
     MatExpansionPanelDescription, MatIcon, NgOptimizedImage, MatTooltip, MatExpansionPanelActionRow,
-    MatButton, MatBadge, DocumentMiniCard,
-  ],
+    MatButton, MatBadge, DocumentMiniCard, RouterLink],
   selector: 'app-shelf-card',
   styleUrl: './shelf-card.css',
   templateUrl: './shelf-card.html',
@@ -73,7 +72,7 @@ export class ShelfCard {
   constructor() { }
 
   openShelf() {
-    this.router.navigate(["/ShelfPage", this.shelfId()]);
+    this.router.navigate(["/Shelf", this.shelfId()]);
   }
 
 }

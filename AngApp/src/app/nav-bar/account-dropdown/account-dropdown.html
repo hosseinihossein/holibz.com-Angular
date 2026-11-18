@@ -1,10 +1,10 @@
-<button matIconButton [matMenuTriggerFor]="menu()" [style]="profileService.myProfileInfo.hasValue() ? imgBtnStyle : ''">
+<button matIconButton [matMenuTriggerFor]="menu()" [style]="profileService.myProfileInfo.hasValue() ? imgBtnStyle : ''"
+    [matTooltip]="identityService.myIdentityInfo.value()?.userName">
     @if(profileService.myProfileInfo.value()?.avatarUrl){
-    <img [ngSrc]="profileService.myProfileInfo.value()!.avatarUrl!" priority width="40" height="40" alt="user avatar"
-        [matTooltip]="identityService.myIdentityInfo.value()?.userName">
+    <img [ngSrc]="profileService.myProfileInfo.value()!.avatarUrl!" priority width="40" height="40" alt="user avatar">
     }
     @else if(identityService.isAuthenticated()){
-    <mat-icon [matTooltip]="identityService.myIdentityInfo.value()?.userName">
+    <mat-icon>
         account_circle
     </mat-icon>
     }
