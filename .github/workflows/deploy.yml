@@ -42,4 +42,6 @@ jobs:
             # Create storage directories for named volumes 
             mkdir -p /opt/myApps/nginx/html/Storage/UserAvatar
             mkdir -p /opt/myApps/nginx/html/Storage/LibraryImage
+            mkdir -p /opt/myApps/nginx/html/Storage/ShelfImage
+            mkdir -p /opt/myApps/nginx/html/Storage/DocumentImage
           EOF
