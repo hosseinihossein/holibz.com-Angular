@@ -38,6 +38,9 @@ export class DocumentList {
   }
 
   openNewDocForm() {
+    if (!this.isMine() || !this.parentShelfId()) {
+      return;
+    }
     this.identityService.getAntiForgeryToken.reload();
     this.dialog.open<NewLibraryForm, undefined, NewLibrary_ResultModel>(NewLibraryForm)
       .afterClosed().subscribe((result) => {

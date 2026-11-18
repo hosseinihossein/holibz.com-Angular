@@ -1,7 +1,7 @@
 <mat-card appearance="outlined">
     <mat-card-header>
         @if(libCardInfo.value()?.imageUrl){
-        <img [ngSrc]="libCardInfo.value()?.imageUrl!" width="40" height="40" alt="library logo" matCardAvatar>
+        <img [ngSrc]="libCardInfo.value()!.imageUrl!" width="40" height="40" alt="library logo" matCardAvatar>
         }
         @else {
         <mat-icon matCardAvatar style="font-size: 36px;text-align: center;">
@@ -11,7 +11,7 @@
         <mat-card-title>{{libCardInfo.value()?.title}}</mat-card-title>
         <mat-card-subtitle>
             <a [routerLink]="['/UserAccount/Profile', libCardInfo.value()?.ownerId]" style="text-wrap: wrap;">
-                {{ownerUsername.value()?.username}}
+                {{ownerUsername()}}
             </a>
         </mat-card-subtitle>
     </mat-card-header>

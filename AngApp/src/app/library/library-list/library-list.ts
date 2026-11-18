@@ -36,6 +36,9 @@ export class LibraryList {
   }
 
   openNewLibraryForm() {
+    if (!this.isMine()) {
+      return;
+    }
     this.identityService.getAntiForgeryToken.reload();
     this.dialog.open<NewLibraryForm, undefined, NewLibrary_ResultModel>(NewLibraryForm)
       .afterClosed().subscribe((result) => {

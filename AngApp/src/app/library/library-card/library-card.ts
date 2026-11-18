@@ -1,5 +1,5 @@
 import { NgOptimizedImage } from '@angular/common';
-import { Component, inject, input } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
 import { MatCard, MatCardHeader, MatCardAvatar, MatCardTitle, MatCardSubtitle, MatCardContent } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
 import { Router, RouterLink } from '@angular/router';
@@ -27,12 +27,26 @@ export class LibraryCard {
   libCardInfo = httpResource<LibraryCardModel>(() =>
     this.libService.GetLibraryCardInfo_Url + this.libraryId()
   );
-  ownerUsername = httpResource<{ username: string }>(() => {
+
+  readonly isMine = computed(() =>
+    this.identityService.isAuthenticated() && this.libCardInfo.value() &&
+    this.libCardInfo.value()?.ownerId === this.identityService.myIdentityInfo.value()?.id
+  );
+
+  private readonly otherOwnerUsername = httpResource<{ username?: string | null }>(() =>
+    this.isMine() ? undefined :
+      this.identityService.GetUsername_Url + this.libCardInfo.value()?.ownerId
+  );
+  readonly ownerUsername = computed(() => this.libCardInfo.value() && this.isMine() ?
+    this.identityService.myIdentityInfo.value()?.userName :
+    this.otherOwnerUsername.value()?.username
+  );
+  /*ownerUsername = httpResource<{ username: string }>(() => {
     const cardInfo = this.libCardInfo.value();
     return cardInfo ?
       this.identityService.GetUsername_Url + cardInfo.ownerId :
       undefined
-  });
+  });*/
 
   constructor() { }
 

@@ -44,7 +44,7 @@ export class ShelfCard {
     this.isMine() ? undefined :
       this.identityService.GetUsername_Url + this.shelfCardInfo.value()?.ownerId
   );
-  readonly ownerUsername = computed(() => this.isMine() ?
+  readonly ownerUsername = computed(() => this.shelfCardInfo.value() && this.isMine() ?
     this.identityService.myIdentityInfo.value()?.userName :
     this.otherOwnerUsername.value()?.username
   );
@@ -54,7 +54,7 @@ export class ShelfCard {
       this.profileService.GetAvatarUrl_Url + this.shelfCardInfo.value()?.ownerId,
     { parse: (res: any) => res === null ? undefined : res }
   );
-  readonly ownerAvatarUrl = computed(() => this.isMine() ?
+  readonly ownerAvatarUrl = computed(() => this.shelfCardInfo.value() && this.isMine() ?
     this.profileService.myProfileInfo.value()?.avatarUrl :
     this.otherOwnerAvatarUrl.value()?.avatarUrl
   );

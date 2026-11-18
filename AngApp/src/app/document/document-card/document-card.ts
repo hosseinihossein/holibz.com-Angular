@@ -38,7 +38,7 @@ export class DocumentCard {
     this.isMine() ? undefined :
       this.identityService.GetUsername_Url + this.docCardInfo.value()?.ownerId
   );
-  readonly ownerUsername = computed(() => this.isMine() ?
+  readonly ownerUsername = computed(() => this.docCardInfo.value() && this.isMine() ?
     this.identityService.myIdentityInfo.value()?.userName :
     this.otherOwnerUsername.value()?.username
   );
@@ -48,7 +48,7 @@ export class DocumentCard {
       this.profileService.GetAvatarUrl_Url + this.docCardInfo.value()?.ownerId,
     { parse: (res: any) => res === null ? undefined : res }
   );
-  readonly ownerAvatarUrl = computed(() => this.isMine() ?
+  readonly ownerAvatarUrl = computed(() => this.docCardInfo.value() && this.isMine() ?
     this.profileService.myProfileInfo.value()?.avatarUrl :
     this.otherOwnerAvatarUrl.value()?.avatarUrl
   );
