@@ -11,6 +11,8 @@ export const serverRoutes: ServerRoute[] = [
   { path: 'UserAccount/ProfileSetting', renderMode: RenderMode.Client },
   { path: 'Library/:libId', renderMode: RenderMode.Client },
   { path: 'Library/Setting/:libId', renderMode: RenderMode.Client },
+  { path: 'Shelf/:libId', renderMode: RenderMode.Client },
+  { path: 'Shelf/Setting/:libId', renderMode: RenderMode.Client },
   /*{
     path: '**',
     renderMode: RenderMode.Prerender

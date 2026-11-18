@@ -19,7 +19,7 @@ export class Mainboard {
 
   libIdsResource = httpResource<{ libIds: string[] }>(() => this.libService.GetLibraryIdsOfUser_Url + this.userId());
 
-  isMe = computed(() => this.identityServise.isAuthenticated() &&
+  isMine = computed(() => this.identityServise.isAuthenticated() &&
     this.userId() === this.identityServise.myIdentityInfo.value()?.id
   );
 

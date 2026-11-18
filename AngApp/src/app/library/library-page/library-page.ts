@@ -35,7 +35,7 @@ export class LibraryPage {
   );
 
   readonly isMine = computed(() => this.identityService.isAuthenticated() &&
-    this.libCardInfo.value() &&
+    !!this.libCardInfo.value() &&
     this.libCardInfo.value()!.ownerId === this.identityService.myIdentityInfo.value()?.id
   );
 
