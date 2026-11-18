@@ -41,5 +41,6 @@
 
 </mat-card>
 
-<app-shelf-list [shelfIds]="shelfIds.value()?.shelfIds ?? []" [isMine]="isMine()" (reload)="shelfIds.reload()">
+<app-shelf-list [shelfIds]="shelfIds.value()?.shelfIds ?? []" [isMine]="isMine()" [parentLibId]="libId()!"
+    (reload)="shelfIds.reload()">
 </app-shelf-list>

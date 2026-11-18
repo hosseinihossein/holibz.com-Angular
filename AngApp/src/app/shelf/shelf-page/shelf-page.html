@@ -41,5 +41,6 @@
 
 </mat-card>
 
-<app-document-list [docIds]="docIds.value()?.docIds ?? []" [isMine]="isMine()" (reload)="docIds.reload()">
+<app-document-list [docIds]="docIds.value()?.docIds ?? []" [isMine]="isMine()" [parentShelfId]="shelfId()!"
+    (reload)="docIds.reload()">
 </app-document-list>
