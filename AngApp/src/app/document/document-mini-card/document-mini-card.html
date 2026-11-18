@@ -10,7 +10,7 @@
         <img mat-card-image #mainImg [ngSrc]="docCardInfo.value()?.imageUrl!" width="100" height="100"
             alt="document image">
         }
-        <p [style.display.block]="!docCardInfo.value()?.imageUrl">
+        <p [class.display]="!docCardInfo.value()?.imageUrl">
             {{docCardInfo.value()?.description}}
         </p>
     </mat-card-content>

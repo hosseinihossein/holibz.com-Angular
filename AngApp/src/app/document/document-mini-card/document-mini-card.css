@@ -43,6 +43,7 @@ mat-card-content p{
     line-height: 14px;
     margin: 0;
 }
-mat-card:hover mat-card-content p{
+mat-card:hover mat-card-content p,
+mat-card-content p.display{
     display: block;
 }
