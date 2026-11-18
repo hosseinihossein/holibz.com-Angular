@@ -8,7 +8,7 @@ mat-card {
 }*/
 mat-card:hover {
     border: 1px solid var(--mat-sys-outline-variant);
-    height: 150px;
+    width: 150px;
 }
 
 mat-card-title{
@@ -37,8 +37,12 @@ mat-card:hover mat-card-content img {
 }
 
 mat-card-content p{
+    display: none;
     padding: 0 8px;
     font-size: 12px;
     line-height: 14px;
     margin: 0;
+}
+mat-card:hover mat-card-content p{
+    display: block;
 }

@@ -1,6 +1,6 @@
 import { NgOptimizedImage } from '@angular/common';
 import { httpResource } from '@angular/common/http';
-import { Component, effect, inject, input, signal } from '@angular/core';
+import { Component, inject, input, signal } from '@angular/core';
 import { MatCard, MatCardContent, MatCardHeader, MatCardTitle } from '@angular/material/card';
 import { DocumentService } from '../document-service';
 
@@ -23,15 +23,7 @@ export class DocumentMiniCard {
 
   readonly appearance = signal<"outlined" | "raised" | "filled">("outlined");
 
-  constructor() {
-    effect(() => {
-      if (this.docCardInfo.value()) {
-        console.log("title = " + this.docCardInfo.value()?.title);
-        console.log("description = " + this.docCardInfo.value()?.description);
-        console.log("imageUrl = " + this.docCardInfo.value()?.imageUrl);
-      }
-    });
-  }
+  constructor() { }
 
   raiseCard() {
     this.appearance.set("raised");
