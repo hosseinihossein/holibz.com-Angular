@@ -33,10 +33,13 @@ export class LibraryCard {
     this.libCardInfo.value()?.ownerId === this.identityService.myIdentityInfo.value()?.id
   );
 
-  private readonly otherOwnerUsername = httpResource<{ username?: string | null }>(() =>
-    this.isMine() ? undefined :
-      this.identityService.GetUsername_Url + this.libCardInfo.value()?.ownerId
-  );
+  private readonly otherOwnerUsername = httpResource<{ username?: string | null }>(() => {
+    if (this.libCardInfo.value()) {
+      return this.isMine() ? undefined :
+        this.identityService.GetUsername_Url + this.libCardInfo.value()?.ownerId
+    }
+    else return undefined;
+  });
   readonly ownerUsername = computed(() => this.libCardInfo.value() && this.isMine() ?
     this.identityService.myIdentityInfo.value()?.userName :
     this.otherOwnerUsername.value()?.username

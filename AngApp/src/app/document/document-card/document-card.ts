@@ -34,18 +34,25 @@ export class DocumentCard {
     this.docCardInfo.value()?.ownerId === this.identityService.myIdentityInfo.value()?.id
   );
 
-  private readonly otherOwnerUsername = httpResource<{ username?: string | null }>(() =>
-    this.isMine() ? undefined :
-      this.identityService.GetUsername_Url + this.docCardInfo.value()?.ownerId
-  );
+  private readonly otherOwnerUsername = httpResource<{ username?: string | null }>(() => {
+    if (this.docCardInfo.value()) {
+      return this.isMine() ? undefined :
+        this.identityService.GetUsername_Url + this.docCardInfo.value()?.ownerId
+    }
+    else return undefined;
+  });
   readonly ownerUsername = computed(() => this.docCardInfo.value() && this.isMine() ?
     this.identityService.myIdentityInfo.value()?.userName :
     this.otherOwnerUsername.value()?.username
   );
 
-  private readonly otherOwnerAvatarUrl = httpResource<{ avatarUrl: string }>(() =>
-    this.isMine() ? undefined :
-      this.profileService.GetAvatarUrl_Url + this.docCardInfo.value()?.ownerId,
+  private readonly otherOwnerAvatarUrl = httpResource<{ avatarUrl: string }>(() => {
+    if (this.docCardInfo.value()) {
+      return this.isMine() ? undefined :
+        this.profileService.GetAvatarUrl_Url + this.docCardInfo.value()?.ownerId
+    }
+    else return undefined;
+  },
     { parse: (res: any) => res === null ? undefined : res }
   );
   readonly ownerAvatarUrl = computed(() => this.docCardInfo.value() && this.isMine() ?
