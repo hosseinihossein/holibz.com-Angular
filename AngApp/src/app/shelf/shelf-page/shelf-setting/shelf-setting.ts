@@ -1,6 +1,6 @@
 import { NgOptimizedImage } from '@angular/common';
 import { Component, computed, effect, inject, signal } from '@angular/core';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatCard, MatCardHeader, MatCardTitle, MatCardContent, MatCardActions } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
@@ -19,7 +19,7 @@ import { EditInputText, EditInputTextDataModel, EditInputTextResultModel } from 
 import { EditTextarea, EditTextareaDataModel, EditTextareaResultModel } from '../../../shared/dialogs/edit-textarea/edit-textarea';
 
 @Component({
-  imports: [MatCard, MatCardHeader, MatIcon, MatCardTitle, MatCardContent,
+  imports: [MatCard, MatCardHeader, MatIcon, MatCardTitle, MatCardContent, MatIconButton,
     MatCardActions, RouterLink, MatButton, NgOptimizedImage, CardTag, WaitSpinner],
   selector: 'app-shelf-setting',
   styleUrl: './shelf-setting.css',

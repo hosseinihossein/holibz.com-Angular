@@ -4,8 +4,11 @@ mat-card {
     transition: all 150ms;
     position: relative;
 }
-mat-card.raised{
+/*mat-card.raised{
+}*/
+mat-card:hover {
     border: 1px solid var(--mat-sys-outline-variant);
+    height: 150px;
 }
 
 mat-card-title{

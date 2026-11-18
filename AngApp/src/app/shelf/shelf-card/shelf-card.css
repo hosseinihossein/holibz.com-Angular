@@ -1,6 +1,62 @@
+mat-expansion-panel{
+    width: 100%;
+}
 img{
     border-radius: 50%;
+    overflow: hidden;
 }
+/**********************/
+
+mat-expansion-panel{
+    padding: 0;
+    border: 1px solid var(--mat-sys-outline-variant);
+}
+
+mat-expansion-panel .listOfDocs{
+    display: flex;
+    justify-content: start;;
+}
+
+mat-expansion-panel .listOfDocs app-document-mini-card{
+    margin: 8px;
+}
+
+mat-expansion-panel-header{
+    padding: 8px 0px 8px 4px;
+}
+
+mat-panel-title{
+    width: fit-content;
+}
+
 mat-panel-description{
     font-size: 14px;
+}
+
+#owner-username{
+    width: 40px;
+    height:40px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+mat-action-row{
+    padding: 8px;
+    border-top: none;
+}
+
+.icon-box{
+    width: 40px;
+    height: 40px;
+    float: left;
+    margin: 0 8px;
+}
+
+.icon-box mat-icon{
+    width: 40px;
+    height: 40px;
+    font-size: 32px;
+    text-align: center;
+    position: relative;
+    top: 14px;
 }

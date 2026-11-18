@@ -2,8 +2,8 @@ import { NgOptimizedImage } from '@angular/common';
 import { httpResource } from '@angular/common/http';
 import { Component, computed, effect, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { MatButton } from '@angular/material/button';
-import { MatCard, MatCardHeader, MatCardTitle, MatCardSubtitle, MatCardContent, MatCardActions } from '@angular/material/card';
+import { MatButton, MatIconButton } from '@angular/material/button';
+import { MatCard, MatCardHeader, MatCardTitle, MatCardContent, MatCardActions } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
 import { RouterLink, ActivatedRoute, Router } from '@angular/router';
 import { IdentityService } from '../../../identity/identity-service';
@@ -19,7 +19,7 @@ import { EditInputText, EditInputTextDataModel, EditInputTextResultModel } from 
 import { EditTextarea, EditTextareaDataModel, EditTextareaResultModel } from '../../../shared/dialogs/edit-textarea/edit-textarea';
 
 @Component({
-  imports: [MatCard, MatCardHeader, MatIcon, MatCardTitle, MatCardContent,
+  imports: [MatCard, MatCardHeader, MatIcon, MatCardTitle, MatCardContent, MatIconButton,
     MatCardActions, RouterLink, MatButton, NgOptimizedImage, CardTag, WaitSpinner
   ],
   selector: 'app-library-setting',
