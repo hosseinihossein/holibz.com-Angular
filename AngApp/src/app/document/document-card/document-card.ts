@@ -13,7 +13,7 @@ import { CardTag } from '../../shared/components/card-tag/card-tag';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 
 @Component({
-  imports: [MatCard, MatCardHeader, MatCardTitle, MatCardSubtitle, MatCardContent, MatCardActions,
+  imports: [MatCard, MatCardHeader, MatCardSubtitle, MatCardContent, MatCardActions,
     MatButton, MatIconButton, MatIcon, MatTooltip, NgOptimizedImage, RouterLink, CardTag, MatMenu,
     MatMenuItem, MatMenuTrigger
   ],

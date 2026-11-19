@@ -16,7 +16,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   imports: [
-    MatCard, MatCardHeader, MatCardTitle, MatCardSubtitle, MatCardContent, MatCardActions,
+    MatCard, MatCardHeader, MatCardSubtitle, MatCardContent, MatCardActions,
     MatButton, MatIconButton, MatIcon, MatTooltip, NgOptimizedImage, RouterLink, CardTag,
     MatMenu, MatMenuItem, MatMenuTrigger,
   ],
