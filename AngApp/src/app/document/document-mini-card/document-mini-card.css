@@ -18,6 +18,7 @@ mat-card-title{
     font-weight: 500;
 }
 mat-card:hover mat-card-title{
+    text-align: center;
     font-weight: bold;
 }
 

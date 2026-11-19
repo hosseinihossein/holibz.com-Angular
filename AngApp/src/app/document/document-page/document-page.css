@@ -1,7 +1,8 @@
 mat-card {
     width: 50%;
-    transition: all 150ms;
     position: relative;
+    padding: 16px 8px 8px 8px;
+    margin: 16px auto;
 }
 
 #more-btn{
@@ -21,24 +22,18 @@ mat-card-title{
 }
 mat-card-subtitle{
     font-size: 14px;
-}
-
-mat-card-content{
-    padding: 0;
+    margin: 16px;
 }
 
 mat-card-content #main-img {
     width: 100%;
     object-fit: contain;
-    transition: all 150ms;
-}
-mat-card-content p/*,
-mat-card-content h3*/{
-    padding: 0 8px;
 }
 mat-card-content p{
     font-size: 16px;
+    margin: 16px 0;
 }
-/*mat-card-content h3{
-    margin: 8px;
-}*/
+
+mat-card-actions button{
+    margin: 0 4px;
+}

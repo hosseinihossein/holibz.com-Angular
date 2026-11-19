@@ -3,6 +3,7 @@ mat-card {
     height: 400px;
     transition: all 150ms;
     position: relative;
+    padding: 16px 0 0 0;
 }
 mat-card.raised{
     border: 1px solid var(--mat-sys-outline-variant);
