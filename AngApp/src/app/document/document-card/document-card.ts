@@ -10,10 +10,12 @@ import { httpResource } from '@angular/common/http';
 import { IdentityService } from '../../identity/identity-service';
 import { ProfileService } from '../../user-account/profile/profile-service';
 import { CardTag } from '../../shared/components/card-tag/card-tag';
+import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 
 @Component({
   imports: [MatCard, MatCardHeader, MatCardTitle, MatCardSubtitle, MatCardContent, MatCardActions,
-    MatButton, MatIconButton, MatIcon, MatTooltip, NgOptimizedImage, RouterLink, CardTag
+    MatButton, MatIconButton, MatIcon, MatTooltip, NgOptimizedImage, RouterLink, CardTag, MatMenu,
+    MatMenuItem, MatMenuTrigger
   ],
   selector: 'app-document-card',
   styleUrl: './document-card.css',
