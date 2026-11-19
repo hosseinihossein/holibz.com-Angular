@@ -9,10 +9,11 @@ import { DocumentService } from '../document-service';
 import { httpResource } from '@angular/common/http';
 import { IdentityService } from '../../identity/identity-service';
 import { ProfileService } from '../../user-account/profile/profile-service';
+import { CardTag } from '../../shared/components/card-tag/card-tag';
 
 @Component({
   imports: [MatCard, MatCardHeader, MatCardTitle, MatCardSubtitle, MatCardContent, MatCardActions,
-    MatButton, MatIconButton, MatIcon, MatTooltip, NgOptimizedImage, RouterLink
+    MatButton, MatIconButton, MatIcon, MatTooltip, NgOptimizedImage, RouterLink, CardTag
   ],
   selector: 'app-document-card',
   styleUrl: './document-card.css',

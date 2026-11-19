@@ -1,5 +1,6 @@
 <mat-card [appearance]="appearance()" [class.raised]="appearance()==='raised'" (mouseenter)="raiseCard()"
     (mouseleave)="outlineCard()">
+    <app-card-tag iconName="book_2" tagName="Document"></app-card-tag>
     @if(isMine()){
     <button matIconButton class="noPaddingBtn" id="remove-btn" matTooltip="Remove from this shelf"
         (click)="removeDocumentFromParentShelf()">

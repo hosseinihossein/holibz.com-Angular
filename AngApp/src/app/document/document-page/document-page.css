@@ -1,0 +1,45 @@
+mat-card {
+    width: 50%;
+    transition: all 150ms;
+    position: relative;
+}
+
+#more-btn{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 0;
+}
+
+img.owner-avatar {
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+    border-radius: 50%;
+}
+mat-card-title{
+    font-size: 24px;
+}
+mat-card-subtitle{
+    font-size: 14px;
+}
+
+mat-card-content{
+    padding: 0;
+}
+
+mat-card-content #main-img {
+    width: 100%;
+    object-fit: contain;
+    transition: all 150ms;
+}
+mat-card-content p/*,
+mat-card-content h3*/{
+    padding: 0 8px;
+}
+mat-card-content p{
+    font-size: 16px;
+}
+/*mat-card-content h3{
+    margin: 8px;
+}*/
