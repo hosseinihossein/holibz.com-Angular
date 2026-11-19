@@ -2,9 +2,8 @@ mat-card{
     width: 256px;
     height: 256px;
     cursor: pointer;
-    overflow: hidden;
+    overflow: visible;
     transition: all 100ms;
-    padding: 8px 0 0;
 }
 
 mat-card:hover{
@@ -13,6 +12,7 @@ mat-card:hover{
 
 mat-card-header{
     border-bottom: 1px solid var(--mat-sys-outline-variant);
+    overflow: hidden;
 }
 
 mat-card-title{

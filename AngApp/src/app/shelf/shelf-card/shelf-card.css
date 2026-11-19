@@ -31,10 +31,15 @@ mat-expansion-panel-header{
 
 mat-panel-title{
     width: fit-content;
+    text-wrap: nowrap;
 }
 
-mat-panel-description{
+mat-panel-description p{
     font-size: 14px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 mat-action-row{

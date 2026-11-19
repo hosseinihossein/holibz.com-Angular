@@ -10,12 +10,12 @@
                 <mat-icon>newsstand</mat-icon>
                 }
             </div>
-            &nbsp;
-            &nbsp;
             {{shelfCardInfo.value()?.title}}
         </mat-panel-title>
         <mat-panel-description>
-            {{shelfCardInfo.value()?.description}}
+            <p>
+                {{shelfCardInfo.value()?.description}}
+            </p>
         </mat-panel-description>
 
         <a [routerLink]="['/UserAccount/Profile',shelfCardInfo.value()?.ownerId]">
