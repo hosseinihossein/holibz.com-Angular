@@ -6,10 +6,12 @@ import { Router, RouterLink } from '@angular/router';
 import { LibraryService } from '../library-service';
 import { httpResource } from '@angular/common/http';
 import { IdentityService } from '../../identity/identity-service';
+import { CardTag } from '../../shared/components/card-tag/card-tag';
 
 @Component({
   imports: [MatCard, MatCardHeader, MatCardAvatar, MatCardTitle, MatCardSubtitle, MatCardContent,
-    MatIcon, NgOptimizedImage, RouterLink],
+    MatIcon, NgOptimizedImage, RouterLink, CardTag,
+  ],
   selector: 'app-library-card',
   styleUrl: './library-card.css',
   templateUrl: './library-card.html',

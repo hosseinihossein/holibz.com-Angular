@@ -3,6 +3,7 @@ mat-card {
     height: 400px;
     position: relative;
     padding: 16px 0 0 0;
+    transition: all 100ms;
 }
 mat-card.raised{
     border: 1px solid var(--mat-sys-outline-variant);
@@ -22,7 +23,7 @@ img.owner-avatar {
 }
 mat-card-subtitle{
     font-size: 12px;
-    margin: 16px 0;
+    margin: 16px 4px;
 }
 
 mat-card-content{

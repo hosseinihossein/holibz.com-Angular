@@ -32,7 +32,7 @@
     </mat-card-header>
 
     <mat-card-content>
-        <h1 style="text-align: center;">{{docCardInfo.value()?.title}}</h1>
+        <h1>{{docCardInfo.value()?.title}}</h1>
         @if(docCardInfo.value()?.imageUrl){
         <img mat-card-image id="main-img" #mainImg [ngSrc]="docCardInfo.value()!.imageUrl!" width="600" height="400"
             alt="document image">

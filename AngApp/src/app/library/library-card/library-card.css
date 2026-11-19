@@ -4,6 +4,7 @@ mat-card{
     cursor: pointer;
     overflow: hidden;
     transition: all 100ms;
+    padding: 8px 0 0;
 }
 
 mat-card:hover{

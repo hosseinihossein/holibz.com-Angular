@@ -1,4 +1,5 @@
 <mat-card appearance="outlined">
+    <app-card-tag iconName="shelves" tagName="Library"></app-card-tag>
     <mat-card-header>
         @if(libCardInfo.value()?.imageUrl){
         <img [ngSrc]="libCardInfo.value()!.imageUrl!" width="40" height="40" alt="library logo" matCardAvatar>
