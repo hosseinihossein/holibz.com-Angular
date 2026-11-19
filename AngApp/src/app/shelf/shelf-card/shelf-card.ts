@@ -12,9 +12,10 @@ import { IdentityService } from '../../identity/identity-service';
 import { Router, RouterLink } from '@angular/router';
 import { DocumentService } from '../../document/document-service';
 import { DocumentMiniCard } from '../../document/document-mini-card/document-mini-card';
+import { CardTag } from '../../shared/components/card-tag/card-tag';
 
 @Component({
-  imports: [MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle,
+  imports: [MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, CardTag,
     MatExpansionPanelDescription, MatIcon, NgOptimizedImage, MatTooltip, MatExpansionPanelActionRow,
     MatButton, MatBadge, DocumentMiniCard, RouterLink],
   selector: 'app-shelf-card',

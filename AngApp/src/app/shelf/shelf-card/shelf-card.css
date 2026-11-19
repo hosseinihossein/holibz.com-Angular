@@ -1,9 +1,12 @@
-mat-expansion-panel{
+:host{
     width: 100%;
 }
 img{
     border-radius: 50%;
     overflow: hidden;
+    width: 40px;
+    height:40px;
+    object-fit: contain;
 }
 /**********************/
 
@@ -31,13 +34,6 @@ mat-panel-title{
 
 mat-panel-description{
     font-size: 14px;
-}
-
-#owner-username{
-    width: 40px;
-    height:40px;
-    object-fit: contain;
-    border-radius: 50%;
 }
 
 mat-action-row{

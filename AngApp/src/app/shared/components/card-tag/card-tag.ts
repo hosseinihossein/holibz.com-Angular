@@ -8,6 +8,6 @@ import { MatIcon } from '@angular/material/icon';
   templateUrl: './card-tag.html',
 })
 export class CardTag {
-  iconName = input.required<string>();
+  iconName = input<string>("");
   tagName = input.required<string>();
 }
