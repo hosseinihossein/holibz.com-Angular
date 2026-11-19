@@ -37,7 +37,9 @@ export class LibrarySetting {
   readonly libId = computed(() => this.params()?.get("libId"));
 
   libCardInfo = httpResource<LibraryCardInfo>(() =>
-    this.libService.GetLibraryCardInfo_Url + this.libId()
+    this.libId() ?
+      this.libService.GetLibraryCardInfo_Url + this.libId() :
+      undefined
   );
 
   readonly isMine = computed(() => this.identityService.isAuthenticated() &&

@@ -14,6 +14,8 @@ mat-card:hover {
 mat-card-title{
     font-size: 14px;
     line-height: 16px;
+    text-align: center;
+    font-weight: 500;
 }
 mat-card:hover mat-card-title{
     font-weight: bold;
@@ -38,7 +40,7 @@ mat-card:hover mat-card-content img {
 
 mat-card-content p{
     display: none;
-    padding: 0 8px;
+    padding: 0 4px;
     font-size: 12px;
     line-height: 14px;
     margin: 0;

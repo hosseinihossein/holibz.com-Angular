@@ -36,7 +36,9 @@ export class ShelfSetting {
   readonly shelfId = computed(() => this.params()?.get("shelfId"));
 
   shelfCardInfo = httpResource<ShelfCardInfo>(() =>
-    this.shelfService.GetShelfCardInfo_Url + this.shelfId()
+    this.shelfId() ?
+      this.shelfService.GetShelfCardInfo_Url + this.shelfId() :
+      undefined
   );
 
   readonly isMine = computed(() => this.identityService.isAuthenticated() &&

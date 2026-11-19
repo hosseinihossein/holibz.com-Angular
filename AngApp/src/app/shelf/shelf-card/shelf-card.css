@@ -13,6 +13,7 @@ img{
 mat-expansion-panel{
     padding: 0;
     border: 1px solid var(--mat-sys-outline-variant);
+    overflow: visible;
 }
 
 mat-expansion-panel .listOfDocs{
